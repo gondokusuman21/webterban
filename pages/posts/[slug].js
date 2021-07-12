@@ -1,43 +1,55 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { blogPosts } from '../../lib/data';
 
 // to tell Nextjs how many html pages needed to be made base on our data (remote api)
 export const getStaticPaths = async () => {
-  return {
-    paths: blogPosts.map((item) => {
-      return { params: { slug: item.slug } };
-    }),
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async (context) => {
-  // console.log(context);
-  const { params } = context;
+  const response = await fetch('http://localhost:1337/posts');
+  const data = await response.json();
+  const paths = data.map(item => {
+    return {
+      params: {
+        slug: item.slug.toString()
+      }
+    }
+  });
 
   return {
-    props: blogPosts.find((item) => item.slug == params.slug),
+    paths,
+    fallback: false
   };
-};
+}
 
-const BlogPage = ({ title, date, content }) => {
+export const getStaticProps = async ({ params }) => {
+
+  const { slug } = params;
+  console.log(slug);
+  const response = await fetch(`http://localhost:1337/posts?slug=${slug}`);
+  const data = await response.json();
+  console.log(data);
+  const post = data[0];
+
+  return {
+    props: { post },
+  };
+}
+
+const BlogPage = ({ post }) => {
   return (
     <>
       <div className='my-2 cursor-pointer hover:underline'>
-        <Link href='/'>
+        <Link href='/' passHref>
           <div className='flex'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              class='h-6 w-6'
+              className='h-6 w-6'
               fill='none'
               viewBox='0 0 24 24'
               stroke='currentColor'
             >
               <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
                 d='M10 19l-7-7m0 0l7-7m-7 7h18'
               />
             </svg>
@@ -48,16 +60,16 @@ const BlogPage = ({ title, date, content }) => {
 
       <div>
         <Head>
-          <title>{title}</title>
+          <title>{post.title}</title>
         </Head>
 
         <main>
-          <h1 className='py-2 font-bold text-center'>{title}</h1>
-          <p>{content}</p>
+          <h1 className='py-2 font-bold text-center'>{post.title}</h1>
+          <p>{post.konten}</p>
         </main>
       </div>
     </>
   );
-};
+}
 
 export default BlogPage;
