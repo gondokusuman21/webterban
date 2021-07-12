@@ -35,7 +35,7 @@ export const getStaticProps = async ({ params }) => {
 
 const BlogPage = ({ post }) => {
   return (
-    <>
+    <div>
       <div className='my-2 cursor-pointer hover:underline'>
         <Link href='/' passHref>
           <div className='flex'>
@@ -68,7 +68,7 @@ const BlogPage = ({ post }) => {
           <p>{post.konten}</p>
         </main>
       </div>
-    </>
+    </div>
   );
 }
 
