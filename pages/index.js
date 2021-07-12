@@ -20,7 +20,7 @@ export default function Home({ data }) {
 
       <main>
         <section className='md:h-full flex items-center text-gray-600'>
-          <div className='container py-10 mx-auto'>
+          <div className='container px-5 py-10 mx-auto'>
             <div className='text-center mb-12'>
               <h1 className='text-xl md:text-2xl text-gray-700 font-semibold'>
                 Desa Melikan dan Cerita di Dalamnya
