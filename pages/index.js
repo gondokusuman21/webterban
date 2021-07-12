@@ -13,7 +13,7 @@ export default function Home({ data }) {
 
       <main>
         <section className='md:h-full flex items-center text-gray-600'>
-          <div className='container py-10 mx-auto'>
+          <div className='container px-5 py-10 mx-auto'>
             <div className='text-center mb-12'>
               <h1 className='text-xl md:text-2xl text-gray-700 font-semibold'>
                 Desa Melikan dan Cerita di Dalamnya
@@ -21,7 +21,6 @@ export default function Home({ data }) {
             </div>
             <div className='flex flex-wrap -m-4'>
               {/* card */}
-<<<<<<< HEAD
               {data.map((item) => (
                 <div key={item.id} className='p-4 sm:w-1/2 lg:w-1/3'>
                   <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
@@ -45,29 +44,6 @@ export default function Home({ data }) {
                           {item.konten.length > 150
                             ? item.konten.substring(0, 150) + '...'
                             : item.konten}
-=======
-              {blogPosts.map((item) => (
-                <div className='p-4 sm:w-1/2 lg:w-1/3' key={item.id}>
-                  <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
-                    <Image
-                      width={192}
-                      height={100}
-                      layout='responsive'
-                      src={imageVill}
-                    />
-                    <Link href={`/posts/${item.slug}`}>
-                      <div className='p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in cursor-pointer'>
-                        <h2 className='text-base font-medium text-indigo-300 mb-1'>
-                          {item.date}
-                        </h2>
-                        <h1 className='text-2xl font-semibold mb-3'>
-                          {item.title}
-                        </h1>
-                        <p className='leading-relaxed mb-3'>
-                          {item.content.length > 150
-                            ? item.content.substring(0, 150) + '...'
-                            : item.content}
->>>>>>> 8e1cd38e7eacfee9ea68c1c69384807f081292e9
                         </p>
                         <div className='flex items-center flex-wrap '>
                           <a className='text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0'>
