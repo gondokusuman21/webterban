@@ -1,42 +1,40 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import parse from 'html-react-parser';
 
 // to tell Nextjs how many html pages needed to be made base on our data (remote api)
 export const getStaticPaths = async () => {
   const response = await fetch('http://localhost:1337/posts');
   const data = await response.json();
-  const paths = data.map(item => {
+  const paths = data.map((item) => {
     return {
       params: {
-        slug: item.slug.toString()
-      }
-    }
+        slug: item.slug.toString(),
+      },
+    };
   });
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
-}
+};
 
 export const getStaticProps = async ({ params }) => {
-
   const { slug } = params;
-  console.log(slug);
   const response = await fetch(`http://localhost:1337/posts?slug=${slug}`);
   const data = await response.json();
-  console.log(data);
   const post = data[0];
 
   return {
     props: { post },
   };
-}
+};
 
 const BlogPage = ({ post }) => {
   return (
     <div>
-      <div className='my-2 cursor-pointer hover:underline'>
+      <div className='my-2 cursor-pointer hover:font-bold'>
         <Link href='/' passHref>
           <div className='flex'>
             <svg
@@ -65,11 +63,11 @@ const BlogPage = ({ post }) => {
 
         <main>
           <h1 className='py-2 font-bold text-center'>{post.title}</h1>
-          <p>{post.konten}</p>
+          <p>{post.content}</p>
         </main>
       </div>
     </div>
   );
-}
+};
 
 export default BlogPage;
