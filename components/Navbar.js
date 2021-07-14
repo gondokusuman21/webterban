@@ -1,23 +1,36 @@
 import Link from 'next/link';
+import LogoTerban from '../public/logo-terban.svg';
+import LogoUnit from '../public/logo-unit.svg';
+import Image from 'next/image';
 
 const Navbar = () => {
   return (
     <nav className=' bg-white border-b border-solid border-gray-600 border-opacity-20 sticky top-0 z-10'>
-      <div className='container mx-auto px-8 py-3 text-center sm:flex items-center justify-between md:py-6 '>
-        <h1 className='text-2xl font-semibold uppercase pb-2 md:pb-0'>
-          Melikan Blog
-        </h1>
+      <div className='cursor-pointer container md:w-11/12 mx-auto py-1 text-center sm:flex items-center justify-between'>
+        <Link passHref href='/'>
+          <div className="flex justify-between items-center gap-5">
+            <Image
+              alt='Logo Kelurahan Terban'
+              src={LogoTerban}
+            />
+            <Image
+              alt='Logo Unit Gondokusuman'
+              src={LogoUnit}
+            />
+            <span className="text-lg tracking-widest font-extrabold">
+              KELURAHAN TERBAN
+            </span>
+          </div>
+        </Link>
 
-        <div className='text-lg'>
+        <div className='text-sm font-medium tracking-widest'>
           <Link href='/'>
-            <a className='hover:underline pr-10'>Home</a>
+            <a className='hover:underline pr-10'>BERANDA</a>
           </Link>
-          {/* <Link href='/posts'>
-            <a className='hover:underline pr-10'>Sejarah Melikan</a>
-          </Link> */}
-          <Link href='/about'>
-            <a className='hover:underline'>About</a>
+          <Link href='/article'>
+            <a className='hover:underline'>ARTIKEL</a>
           </Link>
+
         </div>
       </div>
     </nav>

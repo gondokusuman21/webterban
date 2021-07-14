@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Home({ data }) {
+export default function Articles({ data }) {
   return (
     <div>
       <Head>

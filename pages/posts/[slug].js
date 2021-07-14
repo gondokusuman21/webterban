@@ -1,6 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
+import marked from 'marked';
 import parse from 'html-react-parser';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 // to tell Nextjs how many html pages needed to be made base on our data (remote api)
 export const getStaticPaths = async () => {
@@ -21,52 +25,115 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { slug } = params;
-  const response = await fetch(`http://localhost:1337/posts?slug=${slug}`);
-  const data = await response.json();
-  const post = data[0];
+  try {
+    const { slug } = params;
+    const response = await fetch(`http://localhost:1337/posts?slug=${slug}`);
+    const data = await response.json();
+    const post = data[0];
 
-  return {
-    props: { post },
-  };
+    return {
+      props: {
+        post,
+        statusCode: 200
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        post: null,
+        statusCode: 500
+      },
+    };
+  }
+
 };
 
-const BlogPage = ({ post }) => {
+const BlogPage = ({ post, statusCode }) => {
+
+  const { title, description, content, picture, user, date, time } = post;
+
+  if (statusCode != 200) {
+    return <div>ERROR!!</div>
+  }
+
+  const convertDate = () => {
+    const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    const day = date.substring(date.length - 2, date.length);
+    const year = date.substring(0, 4);
+    const monthIndex = date.substring(5, 7).indexOf("0") == 0 ? date.substring(5, 7).substring(1) : date.substring(5, 7);
+    const month = months[monthIndex - 1];
+
+    return `${day} ${month} ${year}`;
+  }
+
+  const getReadingTime = () => {
+    let str = content.replace(/(^\s*)|(\s*$)/gi, "").replace(/[ ]{2,}/gi, " ").replace(/\n /, "\n");
+    return Math.ceil(str.split(' ').length / 250) + 1;
+  }
+
   return (
-    <div>
-      <div className='my-2 cursor-pointer hover:font-bold'>
-        <Link href='/' passHref>
-          <div className='flex'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-6 w-6'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M10 19l-7-7m0 0l7-7m-7 7h18'
-              />
-            </svg>
-            <a className='mx-2'>Back to Home</a>
+    <>
+      <Head>
+        <title>Terban - {post.title}</title>
+      </Head>
+
+      <nav>
+        <Navbar />
+      </nav>
+
+      <main>
+        <div className="container w-96 mt-5 mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
+          <h1 className="font-serif text-3xl lg:text-6xl lg:mt-10 md:text-5xl sm:text-4xl text-center font-extrabold">{title}</h1>
+          <h5 className="font-sans text-sm lg:text-xl lg:mb-10 md:text-lg sm:text-base text-center my-4">{description}</h5>
+        </div>
+        <Image
+          alt="Main image"
+          layout="responsive"
+          width={picture[0].formats.large.width}
+          height={picture[0].formats.large.height}
+          src={picture[0].formats.large.url}
+        />
+        <div className="container mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
+          <div className="my-12">
+            <h5 className="text-sm font-extrabold tracking-wide lg:text-base md:text-base sm:text-base">{user.username.toUpperCase()}</h5>
+            <h5 className="text-sm font mt-1">{convertDate()}<span> · {getReadingTime()} menit membaca</span></h5>
           </div>
-        </Link>
-      </div>
+          <article>
+            <div className="prose-sm lg:prose-lg">
+              {parse(marked(content))}
+            </div>
+          </article>
+        </div>
+        {/* <div className="">
+          <div className=''>
+            <Link href='/' passHref>
+              <div className='flex'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='h-6 w-6'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M10 19l-7-7m0 0l7-7m-7 7h18'
+                  />
+                </svg>
+                <a className='mx-2'>Back to Home</a>
+              </div>
+            </Link>
+          </div>
+        </div> */}
+      </main>
 
-      <div>
-        <Head>
-          <title>{post.title}</title>
-        </Head>
+      <footer>
+        <Footer />
+      </footer>
 
-        <main>
-          <h1 className='py-2 font-bold text-center'>{post.title}</h1>
-          <p>{post.content}</p>
-        </main>
-      </div>
-    </div>
+    </>
   );
 };
 
