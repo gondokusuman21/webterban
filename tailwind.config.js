@@ -8,7 +8,7 @@ module.exports = {
     },
     extend: {
       screens: {
-        'xsm': '400px'
+        'xsm': '350px'
       }
     },
   },
