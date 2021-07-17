@@ -4,7 +4,7 @@ import Image from 'next/image';
 import NavBar from '../components/Navbar';
 
 export const getStaticProps = async () => {
-  const response = await fetch(`http://localhost:1337/posts`);
+  const response = await fetch(`https://strapi-gk.herokuapp.com/posts`);
   const data = await response.json();
 
   return {

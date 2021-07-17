@@ -33,17 +33,20 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div className='hidden sm:block text-sm font-medium tracking-widest'>
+        <div className='hidden md:block text-sm font-medium tracking-widest'>
           <Link href='/'>
-            <a className='hover:underline pr-10'>BERANDA</a>
+            <a className='mr-10'>KAMPUNG JAWA</a>
           </Link>
           <Link href='/article'>
-            <a className='hover:underline'>ARTIKEL</a>
+            <a className='mr-10'>BERANDA</a>
+          </Link>
+          <Link href='/article'>
+            <a className=''>ARTIKEL</a>
           </Link>
         </div>
 
         {/* Hamburger Button */}
-        <button className="sm:hidden" onClick={handleMenuButtonClick}>
+        <button className="md:hidden" onClick={handleMenuButtonClick}>
           {isMenuOpened ?
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -57,7 +60,10 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Items */}
-      <div className="animate mobile-menu-items hidden sm:hidden">
+      <div className="animate mobile-menu-items hidden md:hidden">
+        <Link href='/'>
+          <a className='border-t border-black block p-4 hover:bg-teal-200'>KAMPUNG JAWA</a>
+        </Link>
         <Link href='/'>
           <a className='border-t border-black block p-4 hover:bg-teal-200'>BERANDA</a>
         </Link>
