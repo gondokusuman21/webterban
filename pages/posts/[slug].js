@@ -51,7 +51,7 @@ export const getStaticProps = async ({ params }) => {
 
 const BlogPage = ({ post, statusCode }) => {
 
-  const { title, description, content, picture, author, date, time } = post;
+  const { title, description, Content, picture, author, date, time } = post;
 
   if (statusCode != 200) {
     return <div>ERROR!!</div>
@@ -101,7 +101,7 @@ const BlogPage = ({ post, statusCode }) => {
           </div>
           <article>
             <div className="prose-sm lg:prose-lg">
-              {parse(marked(content))}
+              {parse(marked(Content))}
             </div>
           </article>
         </div>
