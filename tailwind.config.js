@@ -7,13 +7,17 @@ module.exports = {
       'serif': ['Roboto Slab'],
     },
     extend: {
+      colors: {
+        'yellow': '#ffd900',
+        'black': '#000000'
+      },
       screens: {
         'xsm': '350px'
       }
     },
   },
   variants: {
-    extend: {},
+
   },
   plugins: [require('@tailwindcss/typography')],
 };

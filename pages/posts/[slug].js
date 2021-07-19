@@ -6,9 +6,10 @@ import parse from 'html-react-parser';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
+const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 // to tell Nextjs how many html pages needed to be made base on our data (remote api)
 export const getStaticPaths = async () => {
-  const response = await fetch('https://strapi-gk.herokuapp.com/posts');
+  const response = await fetch(`${STRAPI_URL}/posts`);
   const data = await response.json();
   const paths = data.map((item) => {
     return {
@@ -27,7 +28,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   try {
     const { slug } = params;
-    const response = await fetch(`https://strapi-gk.herokuapp.com/posts?slug=${slug}`);
+    const response = await fetch(`${STRAPI_URL}/posts?slug=${slug}`);
     const data = await response.json();
     const post = data[0];
 
