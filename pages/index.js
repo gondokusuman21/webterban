@@ -58,10 +58,10 @@ export default function Home({ data }) {
         </section>
 
         <main id="main-section" className="w-full p-5 mx-auto">
-          <h2 className="text-xl text-center font-bold text-black">Jelajahi Keberagaman Budaya Jawa</h2>
+          <h2 className="text-2xl mx-auto w-4/6 text-center font-bold text-black">Jelajahi Keberagaman Budaya Jawa</h2>
           <section>
             {data.map((item) => (
-              <div className="w-4/6 mx-auto mt-5 flex flex-col justify-center" key={item.id}>
+              <div className="w-5/6 mx-auto mt-5 flex flex-col justify-center" key={item.id}>
                 <div className="w-full">
                   <Image
                     alt="Thumbnail"
@@ -74,8 +74,8 @@ export default function Home({ data }) {
                 <div>
                   <h3 className="font-bold mt-3">{item.title}</h3>
                   <h4 className="">{item.description}</h4>
-                  <Link passHref href={`/activities/${item.slug}`}>
-                    <div className="text-blue-500 hover:text-blue-700 cursor-pointer mt-1 flex w-7/12 justify-between items-center">
+                  <Link passHref href={`/activity/${item.slug}`}>
+                    <div className="text-blue-500 hover:text-blue-700 cursor-pointer mt-1 flex w-1/2 justify-between items-center">
                       <h4>Baca selengkapnya</h4>
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -83,6 +83,7 @@ export default function Home({ data }) {
                     </div>
                   </Link>
                 </div>
+                <hr className="mt-3 bg-blue-300"></hr>
               </div>
             ))}
           </section>

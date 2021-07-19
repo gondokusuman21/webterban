@@ -51,7 +51,7 @@ export const getStaticProps = async ({ params }) => {
 
 const BlogPage = ({ post, statusCode }) => {
 
-  const { title, description, content, picture, user, date, time } = post;
+  const { title, description, content, picture, author, date, time } = post;
 
   if (statusCode != 200) {
     return <div>ERROR!!</div>
@@ -90,13 +90,13 @@ const BlogPage = ({ post, statusCode }) => {
         <Image
           alt="Main image"
           layout="responsive"
-          width={picture[0].formats.large.width}
-          height={picture[0].formats.large.height}
-          src={picture[0].formats.large.url}
+          width={picture.formats.large.width}
+          height={picture.formats.large.height}
+          src={picture.formats.large.url}
         />
         <div className="container mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
           <div className="my-12">
-            <h5 className="text-sm font-extrabold tracking-wide lg:text-base md:text-base sm:text-base">{user.username.toUpperCase()}</h5>
+            <h5 className="text-sm font-extrabold tracking-wide lg:text-base md:text-base sm:text-base">{author.username.toUpperCase()}</h5>
             <h5 className="text-sm font mt-1">{convertDate()}<span> · {getReadingTime()} menit membaca</span></h5>
           </div>
           <article>
