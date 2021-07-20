@@ -7,6 +7,10 @@ module.exports = {
       'serif': ['Roboto Slab'],
     },
     extend: {
+      height: {
+        '1/10-screen': '10vh',
+        '9/10-screen': '90vh'
+      },
       colors: {
         'yellow': '#ffd900',
         'black': '#000000'
