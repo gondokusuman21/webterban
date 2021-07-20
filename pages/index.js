@@ -28,7 +28,7 @@ export default function Home({ data }) {
   return (
     <div>
       <Head>
-        <title>Melikan Blog</title>
+        <title>Terban Kampung Wisata</title>
       </Head>
 
       <nav>
@@ -57,37 +57,83 @@ export default function Home({ data }) {
           </div>
         </section>
 
-        <main id="main-section" className="w-full p-5 mx-auto">
-          <h2 className="text-2xl mx-auto w-4/6 text-center font-bold text-black">Jelajahi Keberagaman Budaya Jawa</h2>
-          <section>
-            {data.map((item) => (
-              <div className="w-5/6 mx-auto mt-5 flex flex-col justify-center" key={item.id}>
-                <div className="w-full">
+        <main id="main-section" className="">
+          <h5 className="text-sm font-bold tracking-tight text-center mt-5
+            lg:text-left lg:w-10/12 lg:mx-auto  
+          ">KEBERAGAMAN BUDAYA</h5>
+          <section className="mx-auto mt-5
+            lg:grid lg:grid-rows-3 lg:grid-flow-col lg:gap-0 lg:w-10/12 lg:gap-y-10
+            xl:grid-rows-2 xl:gap-y-10 xl:w-10/12
+          ">
+            {data.slice(0, 6).map((item) => (
+              <div
+                className="
+                  w-11/12 mx-auto mt-5 flex gap-3 justify-between
+                  sm:w-8/12
+                  lg:w-11/12 lg:m-0
+                  " key={item.id}
+              >
+                <div className="container relative h-20 min-w-2/5 max-w-2/5
+                     sm:h-32
+                     lg:h-36 lg:max-w-36 lg:min-w-36
+                  ">
                   <Image
                     alt="Thumbnail"
-                    src={item.coverpicture.formats.thumbnail.url}
-                    width={item.coverpicture.formats.thumbnail.width}
-                    height={item.coverpicture.formats.thumbnail.height}
-                    layout="responsive"
+                    src={item.coverpicture.formats.small.url}
+                    objectFit="cover"
+                    layout="fill"
                   />
                 </div>
-                <div>
-                  <h3 className="font-bold mt-3">{item.title}</h3>
-                  <h4 className="">{item.description}</h4>
+                <div className="w-7/12 flex flex-col justify-center">
+                  <h3 className="font-bold text-sm">{item.title.toUpperCase()}</h3>
+                  <h4 className="hidden">{item.description}</h4>
                   <Link passHref href={`/activity/${item.slug}`}>
-                    <div className="text-blue-500 hover:text-blue-700 cursor-pointer mt-1 flex w-1/2 justify-between items-center">
-                      <h4>Baca selengkapnya</h4>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                    <div>
+                      <span className="text-sm text-blue-500 hover:text-blue-700 cursor-pointer mt-1">Baca selengkapnya</span>
+                      {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg> */}
                     </div>
                   </Link>
                 </div>
-                <hr className="mt-3 bg-blue-300"></hr>
               </div>
             ))}
           </section>
         </main>
+
+        {/* <main id="main-section" className="w-full sm:w-5/6 md:w-full p-5 mx-auto">
+          <h2 className="text-2xl mx-auto w-4/6 text-center lg:text-left lg:mx-0 font-bold text-black">KEBERAGAMAN BUDAYA</h2>
+          <section>
+            {data.map((item) => (
+              <>
+                <div className="w-full sm:w-4/6 container mx-auto gap-6 mt-5 flex flex-col lg:flex-row justify-center lg:justify-between" key={item.id}>
+                  <div className="container md:max-w-1/4 md:min-w-1/4 md:min-h-full bg-red-500">
+                    <Image
+                      alt="Thumbnail"
+                      src={item.coverpicture.formats.thumbnail.url}
+                      width={item.coverpicture.formats.thumbnail.width}
+                      height={item.coverpicture.formats.thumbnail.height}
+                      layout="responsive"
+                    />
+                  </div>
+                  <div className="md:flex md:flex-col md:justify-between">
+                    <h3 className="font-bold">{item.title}</h3>
+                    <h4 className="">{item.description}</h4>
+                    <Link passHref href={`/activity/${item.slug}`}>
+                      <div className="text-blue-500 hover:text-blue-700 cursor-pointer mt-1 w-8/12 sm:w-1/2">
+                        <span>Baca selengkapnya</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+                <hr className="mt-3 w-5/6 mx-auto bg-blue-300 md:hidden"></hr>
+              </>
+            ))}
+          </section>
+        </main> */}
 
         <footer>
           <Footer />

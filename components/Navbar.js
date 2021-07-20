@@ -60,7 +60,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Items */}
-      <div className="animate mobile-menu-items hidden lg:hidden">
+      <div className="mobile-menu-items hidden lg:hidden">
         <Link href='/'>
           <a className='border-t border-black block p-4 text-black opacity-70 hover:opacity-100'>KAMPUNG JAWA</a>
         </Link>

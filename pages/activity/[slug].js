@@ -51,7 +51,7 @@ export const getStaticProps = async ({ params }) => {
 
 const ActivityDetailsPage = ({ activities, statusCode }) => {
 
-    const { title, description, Content, coverpicture, user, date, time } = activities;
+    const { title, description, content, coverpicture, user, date, time } = activities;
 
     if (statusCode != 200) {
         return <div>ERROR!!</div>
@@ -84,7 +84,7 @@ const ActivityDetailsPage = ({ activities, statusCode }) => {
                 <div className="container mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
                     <article>
                         <div className="prose-sm lg:prose-lg">
-                            {parse(marked(Content))}
+                            {parse(marked(content))}
                         </div>
                     </article>
                 </div>
