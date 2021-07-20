@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ActivityCard from '../components/ActivityCard';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 const COVER_IMAGE_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1626695575/hero-image_j0bxmo.jpg";
@@ -58,8 +59,26 @@ export default function Home({ data }) {
           </div>
         </section>
 
-        <main id="main-section" className="">
-          <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-5
+        <section id="main-section" className="w-full mx-auto mt-10">
+          <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10
+            sm:w-8/12
+            lg:w-10/12   
+          ">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+            </svg>
+            <h5>KAMPUNG JAWA: DESTINASI WISATA DI YOGYAKARTA</h5>
+          </div>
+          <div className="mt-5 w-11/12 sm:w-8/12 lg:w-10/12 mx-auto">
+            <div className="aspect-w-16 aspect-h-9">
+              <iframe src="https://www.youtube.com/embed/tv0ogOmjrCA" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            </div>
+          </div>
+        </section>
+        <hr className="my-10"></hr>
+
+        <section>
+          <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10
             sm:w-8/12
             lg:w-10/12   
           ">
@@ -68,144 +87,28 @@ export default function Home({ data }) {
             </svg>
             <h5>KEBERAGAMAN BUDAYA</h5>
           </div>
-          <section className="mx-auto mt-5
-            lg:grid lg:grid-rows-3 lg:grid-cols-2 lg:grid-flow-col lg:gap-0 lg:w-10/12 lg:gap-y-10
-            xl:grid-cols-3 xl:grid-rows-2 xl:gap-y-10 xl:w-10/12
-          ">
-            {data.slice(0, 6).map((item) => (
-              <div
-                className="
-                  w-11/12 mx-auto mt-5 flex gap-3 justify-between
-                  sm:w-8/12
-                  lg:w-11/12 lg:m-0 lg:bg-blue-100
-                  xl:gap-5 xl:justify-start
-                  filter drop-shadow-sm
-                  " key={item.id}
-              >
-                <div className="container relative h-20 min-w-2/5 max-w-2/5
-                     sm:h-32
-                     lg:h-36 lg:max-w-36 lg:min-w-36
-                     xl:min-h-40 xl:min-w-40 
-                  ">
-                  <Image
-                    alt="Thumbnail"
-                    src={item.coverpicture.formats.small.url}
-                    objectFit="cover"
-                    layout="fill"
-                  />
-                </div>
-                <div className="w-7/12 flex flex-col justify-center
-                  xl:w-1/2
-                ">
-                  <h3 className="font-bold text-sm">{item.title.toUpperCase()}</h3>
-                  <h4 className="hidden">{item.description}</h4>
-                  <Link passHref href={`/activity/${item.slug}`}>
-                    <div>
-                      <span className="text-sm text-blue-500 hover:text-blue-700 cursor-pointer mt-1">Baca selengkapnya</span>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </section>
-        </main>
+          <ActivityCard data={data} />
+        </section>
+        <hr className="my-10"></hr>
 
-        {/* <main id="main-section" className="w-full sm:w-5/6 md:w-full p-5 mx-auto">
-          <h2 className="text-2xl mx-auto w-4/6 text-center lg:text-left lg:mx-0 font-bold text-black">KEBERAGAMAN BUDAYA</h2>
-          <section>
-            {data.map((item) => (
-              <>
-                <div className="w-full sm:w-4/6 container mx-auto gap-6 mt-5 flex flex-col lg:flex-row justify-center lg:justify-between" key={item.id}>
-                  <div className="container md:max-w-1/4 md:min-w-1/4 md:min-h-full bg-red-500">
-                    <Image
-                      alt="Thumbnail"
-                      src={item.coverpicture.formats.thumbnail.url}
-                      width={item.coverpicture.formats.thumbnail.width}
-                      height={item.coverpicture.formats.thumbnail.height}
-                      layout="responsive"
-                    />
-                  </div>
-                  <div className="md:flex md:flex-col md:justify-between">
-                    <h3 className="font-bold">{item.title}</h3>
-                    <h4 className="">{item.description}</h4>
-                    <Link passHref href={`/activity/${item.slug}`}>
-                      <div className="text-blue-500 hover:text-blue-700 cursor-pointer mt-1 w-8/12 sm:w-1/2">
-                        <span>Baca selengkapnya</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-                <hr className="mt-3 w-5/6 mx-auto bg-blue-300 md:hidden"></hr>
-              </>
-            ))}
-          </section>
-        </main> */}
+        <section>
+          <div>
+            <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10
+              sm:w-8/12
+              lg:w-10/12   
+            ">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <h5>EVENT TERBARU</h5>
+            </div>
+          </div>
+        </section>
 
         <footer>
           <Footer />
         </footer>
 
-
-
-        {/* <section className='md:h-full flex items-center text-gray-600'>
-          <div className='container px-5 py-10 mx-auto'>
-            <div className='text-center mb-12'>
-              <h1 className='text-xl md:text-2xl text-gray-700 font-semibold'>
-                Desa Melikan dan Cerita di Dalamnya
-              </h1>
-            </div>
-            <div className='flex flex-wrap -m-4'>
-              {data.map((item) => (
-                <div className='p-4 sm:w-1/2 lg:w-1/3' key={item.id}>
-                  <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden flex flex-col justify-between'>
-                    <div>
-                      <Image
-                        alt='Ini gambar'
-                        width={item.picture[0].formats.thumbnail.width}
-                        height={item.picture[0].formats.thumbnail.height}
-                        layout='responsive'
-                        src={item.picture[0].formats.thumbnail.url}
-                      />
-                    </div>
-                    <Link passHref href={`/posts/${item.slug}`}>
-                      <div className='p-6 hover:bg-indigo-700 hover:text-white transition duration-300 ease-in cursor-pointer'>
-                        <h2 className='text-base font-medium text-indigo-300 mb-1'>
-                          {item.date}
-                        </h2>
-                        <h1 className='text-2xl font-semibold mb-3'>
-                          {item.title}
-                        </h1>
-                        <p className='leading-relaxed mb-3'>
-                          {item.description}
-                        </p>
-                        <div className='flex items-center flex-wrap '>
-                          <a className='text-indigo-300 inline-flex items-center md:mb-2 lg:mb-0'>
-                            Read More
-                            <svg
-                              className='w-4 h-4 ml-2'
-                              viewBox='0 0 24 24'
-                              stroke='currentColor'
-                              strokeWidth='2'
-                              fill='none'
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                            >
-                              <path d='M5 12h14'></path>
-                              <path d='M12 5l7 7-7 7'></path>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
       </main>
     </div>
   );
