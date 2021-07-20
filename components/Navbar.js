@@ -19,14 +19,18 @@ const Navbar = () => {
       <div className='flex w-11/12 md:w-11/12 mx-auto py-1 text-center sm:flex items-center justify-between'>
         <Link passHref href='/'>
           <div className="cursor-pointer flex justify-center sm:justify-between items-center gap-5">
-            <Image
-              alt='Logo Kelurahan Terban'
-              src={LogoTerban}
-            />
-            <Image
-              alt='Logo Unit Gondokusuman'
-              src={LogoUnit}
-            />
+            <div>
+              <Image
+                alt='Logo Kelurahan Terban'
+                src={LogoTerban}
+              />
+            </div>
+            <div>
+              <Image
+                alt='Logo Unit Gondokusuman'
+                src={LogoUnit}
+              />
+            </div>
             <span className="hidden sm:block text-lg tracking-widest font-extrabold">
               KELURAHAN TERBAN
             </span>
