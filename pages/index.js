@@ -4,21 +4,25 @@ import Image from 'next/image';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ActivityCard from '../components/ActivityCard';
+import EventCard from '../components/EventCard';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 const COVER_IMAGE_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1626695575/hero-image_j0bxmo.jpg";
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${STRAPI_URL}/activities`);
-  const data = await response.json();
+  const activitiesResponse = await fetch(`${STRAPI_URL}/activities`);
+  const activitiesData = await activitiesResponse.json();
+
+  const eventsResponse = await fetch(`${STRAPI_URL}/events`);
+  const eventsData = await eventsResponse.json();
 
   return {
-    props: { data },
+    props: { activitiesData, eventsData },
     revalidate: 3600
   };
 };
 
-export default function Home({ data }) {
+export default function Home({ activitiesData, eventsData }) {
 
   const handleTelusuriButton = (e) => {
     e.preventDefault();
@@ -87,7 +91,7 @@ export default function Home({ data }) {
             </svg>
             <h5>KEBERAGAMAN BUDAYA</h5>
           </div>
-          <ActivityCard data={data} />
+          <ActivityCard data={activitiesData} />
         </section>
         <hr className="my-10"></hr>
 
@@ -102,6 +106,10 @@ export default function Home({ data }) {
               </svg>
               <h5>EVENT TERBARU</h5>
             </div>
+            <EventCard data={eventsData} />
+          </div>
+          <div>
+
           </div>
         </section>
 
