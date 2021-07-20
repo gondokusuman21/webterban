@@ -26,36 +26,19 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-    try {
-        const { slug } = params;
-        const response = await fetch(`${STRAPI_URL}/activities?slug=${slug}`);
-        const data = await response.json();
-        const activities = data[0];
+    const { slug } = params;
+    const response = await fetch(`${STRAPI_URL}/activities?slug=${slug}`);
+    const data = await response.json();
+    const activities = data[0];
 
-        return {
-            props: {
-                activities,
-                statusCode: 200
-            },
-        };
-    } catch (error) {
-        return {
-            props: {
-                activities: null,
-                statusCode: 500
-            },
-        };
-    }
-
+    return {
+        props: { activities }
+    };
 };
 
-const ActivityDetailsPage = ({ activities, statusCode }) => {
+const ActivityDetailsPage = ({ activities }) => {
 
     const { title, description, content, coverpicture, user, date, time } = activities;
-
-    if (statusCode != 200) {
-        return <div>ERROR!!</div>
-    }
 
     return (
         <>

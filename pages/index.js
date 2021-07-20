@@ -59,8 +59,9 @@ export default function Home({ data }) {
         </section>
 
         <main id="main-section" className="">
-          <div className="flex gap-1 items-center text-sm font-bold tracking-tight text-center mt-5
-            lg:text-left lg:w-10/12 lg:mx-auto  
+          <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-5
+            sm:w-8/12
+            lg:w-10/12   
           ">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -78,6 +79,7 @@ export default function Home({ data }) {
                   sm:w-8/12
                   lg:w-11/12 lg:m-0 lg:bg-blue-100
                   xl:gap-5 xl:justify-start
+                  filter drop-shadow-sm
                   " key={item.id}
               >
                 <div className="container relative h-20 min-w-2/5 max-w-2/5
@@ -100,9 +102,6 @@ export default function Home({ data }) {
                   <Link passHref href={`/activity/${item.slug}`}>
                     <div>
                       <span className="text-sm text-blue-500 hover:text-blue-700 cursor-pointer mt-1">Baca selengkapnya</span>
-                      {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg> */}
                     </div>
                   </Link>
                 </div>
