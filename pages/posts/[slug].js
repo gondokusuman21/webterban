@@ -72,10 +72,19 @@ const BlogPage = ({ post, statusCode }) => {
     return Math.ceil(str.split(' ').length / 250) + 1;
   }
 
+  const getImage = () => {
+    let width = picture.formats?.large?.width || picture.formats?.medium?.width || picture.formats?.small?.width;
+    let height = picture.formats?.large?.height || picture.formats?.medium?.height || picture.formats?.small?.height;
+    let url = picture.formats?.large?.url || picture.formats?.medium?.url || picture.formats?.small?.url;
+    return {
+      width, height, url
+    }
+  }
+
   return (
     <>
       <Head>
-        <title>Terban - {post.title}</title>
+        <title>{post.title}</title>
       </Head>
 
       <nav>
@@ -90,9 +99,9 @@ const BlogPage = ({ post, statusCode }) => {
         <Image
           alt="Main image"
           layout="responsive"
-          width={picture.formats.large.width}
-          height={picture.formats.large.height}
-          src={picture.formats.large.url}
+          width={getImage().width}
+          height={getImage().height}
+          src={getImage().url}
         />
         <div className="container mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
           <div className="my-12">
@@ -105,29 +114,6 @@ const BlogPage = ({ post, statusCode }) => {
             </div>
           </article>
         </div>
-        {/* <div className="">
-          <div className=''>
-            <Link href='/' passHref>
-              <div className='flex'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='h-6 w-6'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  stroke='currentColor'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth='2'
-                    d='M10 19l-7-7m0 0l7-7m-7 7h18'
-                  />
-                </svg>
-                <a className='mx-2'>Back to Home</a>
-              </div>
-            </Link>
-          </div>
-        </div> */}
       </main>
 
       <footer>
