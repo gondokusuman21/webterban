@@ -32,6 +32,7 @@ const PostsCard = ({ data }) => {
   if (data.length > 0) {
     return (
       sortedData().map((post, index) => {
+        let url = post.picture.formats?.large?.url || post.picture.formats?.medium?.url || post.picture.formats?.small?.url;
         return (
           <Link key={index} passHref href={`/posts/${post.slug}`}>
             <div className="flex w-full gap-4 lg:gap-0 lg:w-full xl:w-5/6 justify-between h-36 mt-10 cursor-pointer">
@@ -56,7 +57,7 @@ const PostsCard = ({ data }) => {
                 </div>
               </div>
               <div className="container relative w-48">
-                <Image alt="Image" src={post.picture.formats.small.url} objectFit="cover"
+                <Image alt="Image" src={url} objectFit="cover"
                   layout="fill"></Image>
               </div>
             </div>
