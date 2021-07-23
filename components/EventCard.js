@@ -17,13 +17,11 @@ const Card = ({ data }) => {
   const getDateDetails = (inputDate) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agt', 'Sept', 'Okt', 'Nov', 'Des'];
     const day = inputDate.substring(inputDate.length - 2, inputDate.length);
-    const year = inputDate.substring(0, 4);
     const monthIndex = inputDate.substring(5, 7).indexOf("0") == 0 ? inputDate.substring(5, 7).substring(1) : inputDate.substring(5, 7);
     const month = months[monthIndex - 1];
 
     return {
       day,
-      year,
       month
     }
   }
@@ -49,27 +47,29 @@ const Card = ({ data }) => {
     return 0;
   }
 
-  return (
-    <div className="">
-      {sortedData().map((item) => {
-        let dateDetails = getDateDetails(item.date);
-        let day = dateDetails.day;
-        let monthAndYear = `${dateDetails.month} ${dateDetails.year}`;
-        return (
-          <div className="" key={item.id}
-          >
-            <div className="flex gap-3 w-4/5">
-              <div className="bg-blue-200 p-3 max-w-20 min-w-20 h-20 mb-3">
-                <h5 className="text-xl font-black text-center">{day}</h5>
-                <h5>{monthAndYear}</h5>
+  if (data.length > 0) {
+    return (
+      <div>
+        {sortedData().map((item, index) => {
+          let dateDetails = getDateDetails(item.date);
+          let day = dateDetails.day;
+          let month = dateDetails.month;
+          return (
+            <div key={index} className="flex mt-5 justify-start h-20 items-center w-4/5">
+              <div className="bg-blue-200 border border-blue-200 flex justify-center items-center flex-col max-w-20 min-w-20 h-20">
+                <h5 className="text-xl font-black">{day}</h5>
+                <h5>{month}</h5>
               </div>
-              <h3 className="font-bold text-sm">{item.title.toUpperCase()}</h3>
+              <div className="w-4/5 flex items-center border-r border-t border-b border-blue-200 h-full">
+                <h3 className="font-bold text-sm ml-2">{item.title}</h3>
+              </div>
             </div>
-          </div>
-        )
-      })}
-    </div>
-  )
+          )
+        })}
+      </div>
+    )
+  }
+
 };
 
 export default Card;

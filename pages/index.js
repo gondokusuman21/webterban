@@ -57,7 +57,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
             />
             <div className="absolute top-0 h-full w-full flex items-center justify-center flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-14 xl:gap-20">
               <h2 className="text-noto font-bold z-20 text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h2>
-              <h1 className="text-yellow font-bold z-20 font-serif text-2xl text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Selamat Datang<br></br> di Kampung Jawa</h1>
+              <h1 className="text-red-300 font-bold z-20 font-serif text-2xl text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Selamat Datang<br></br> di Kampung Jawa</h1>
               <button onClick={handleTelusuriButton} className="flex justify-around items-center bg-yellow p-2 w-40 md:w-52 lg:w-60">
                 <h4 className="text-black text-xs md:text-sm lg:text-base">Telusuri sekarang</h4>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:w-4 lg:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,7 +111,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
             <PostsCard data={postsData} />
           </div>
           <hr className="my-10 lg:hidden"></hr>
-          <div className="w-11/12 sm:w-8/12 xl:w-11/12 mx-auto lg:w-2/6 lg:mx-0">
+          <div className="w-11/12 sm:w-8/12 lg:w-2/6 mx-auto lg:mx-0">
             <div className="flex items-center text-sm font-bold tracking-tight gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

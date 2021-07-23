@@ -17,14 +17,26 @@ const PostsCard = ({ data }) => {
     return `${day} ${month}`;
   }
 
+  const sortedData = () => {
+    let filteredEventsData = data;
+    let sortedEventsData = filteredEventsData.sort(compare);
+    return sortedEventsData;
+  }
+
+  const compare = (object1, object2) => {
+    if (object1.date > object2.date) return -1
+    if (object1.date < object2.date) return 1
+    return 0;
+  }
+
   if (data.length > 0) {
     return (
-      data.map((post, index) => {
+      sortedData().map((post, index) => {
         return (
           <Link key={index} passHref href={`/posts/${post.slug}`}>
             <div className="flex gap-2 lg:gap-5 h-36 mt-5 cursor-pointer">
               <div className="w-8/12 flex flex-col justify-center gap-y-2 lg:gap-y-1">
-                <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-medium">{post.author.username}</span></h5>
+                <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{post.author.username}</span></h5>
                 <div>
                   <h2 className="font-black text-base lg:text-xl">{post.title}</h2>
                   <h2 className="text-gray-600 text-xs lg:text-base">{post.description}</h2>
