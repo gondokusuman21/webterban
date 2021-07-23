@@ -109,6 +109,9 @@ export default function Home({ activitiesData, eventsData, postsData }) {
               <h5>ARTIKEL TERBARU</h5>
             </div>
             <PostsCard data={postsData} />
+            <Link passHref href={`/article`}>
+              <button className="mt-5 lg:mt-10 xl:w-5/6 p-1 text-xs lg:text-base border border-gray-400 w-full z-20 hover:font-bold">Lihat Lebih Banyak</button>
+            </Link>
           </div>
           <hr className="my-10 lg:hidden"></hr>
           <div className="w-11/12 sm:w-8/12 lg:w-2/6 mx-auto lg:mx-0">

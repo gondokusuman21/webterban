@@ -7,6 +7,9 @@ module.exports = {
       'serif': ['Roboto Slab'],
     },
     extend: {
+      fontSize: {
+        'xxs': '0.625rem'
+      },
       height: {
         '1/10-screen': '10vh',
         '9/10-screen': '90vh'

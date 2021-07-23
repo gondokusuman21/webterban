@@ -92,6 +92,26 @@ const BlogPage = ({ post, statusCode }) => {
       </nav>
 
       <main>
+        <section className="mx-auto text-sm px-2 lg:px-10 mt-5 lg:mt-10 flex justify-start items-center">
+          <Link passHref href={`/`}>
+            <div className="flex cursor-pointer justify-center items-center">
+              <div>Beranda</div>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </Link>
+          <div className="flex justify-center items-center">
+            <div>Artikel</div>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+          <div className="text-blue-500 underline cursor-pointer">
+            <div>{post.title}</div>
+          </div>
+        </section>
+
         <div className="container w-96 mt-5 mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
           <h1 className="font-serif text-3xl lg:text-6xl lg:mt-10 md:text-5xl sm:text-4xl text-center font-extrabold">{title}</h1>
           <h5 className="font-sans text-sm lg:text-xl lg:mb-10 md:text-lg sm:text-base text-center my-4">{description}</h5>
