@@ -5,6 +5,8 @@ import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ActivityCard from '../components/ActivityCard';
 import EventCard from '../components/EventCard';
+import PostsCard from '../components/PostsCard';
+import { data } from 'autoprefixer';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 const COVER_IMAGE_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1626695575/hero-image_j0bxmo.jpg";
@@ -16,13 +18,16 @@ export const getStaticProps = async () => {
   const eventsResponse = await fetch(`${STRAPI_URL}/events`);
   const eventsData = await eventsResponse.json();
 
+  const postsResponse = await fetch(`${STRAPI_URL}/posts`);
+  const postsData = await postsResponse.json();
+
   return {
-    props: { activitiesData, eventsData },
+    props: { activitiesData, eventsData, postsData },
     revalidate: 3600
   };
 };
 
-export default function Home({ activitiesData, eventsData }) {
+export default function Home({ activitiesData, eventsData, postsData }) {
 
   const handleTelusuriButton = (e) => {
     e.preventDefault();
@@ -95,21 +100,27 @@ export default function Home({ activitiesData, eventsData }) {
         </section>
         <hr className="my-10"></hr>
 
-        <section>
-          <div>
-            <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10
-              sm:w-8/12
-              lg:w-10/12   
-            ">
+        <section className="lg:container lg:w-10/12 lg:flex lg:justify-between lg:mx-auto">
+          <div className="w-11/12 sm:w-8/12 xl:w-11/12 mx-auto lg:w-3/5 lg:mx-0">
+            <div className="flex items-center text-sm font-bold tracking-tight gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <h5>ARTIKEL TERBARU</h5>
+            </div>
+            <PostsCard data={postsData} />
+          </div>
+          <hr className="my-10 lg:hidden"></hr>
+          <div className="w-11/12 sm:w-8/12 xl:w-11/12 mx-auto lg:w-2/6 lg:mx-0">
+            <div className="flex items-center text-sm font-bold tracking-tight gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <h5>EVENT TERBARU</h5>
             </div>
-            <EventCard data={eventsData} />
-          </div>
-          <div>
-
+            <div>
+              <EventCard data={eventsData} />
+            </div>
           </div>
         </section>
 
