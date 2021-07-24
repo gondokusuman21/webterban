@@ -4,25 +4,25 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
 const Article = () => {
-    return (
-        <>
-            <Head>
-                <title>Artikel</title>
-            </Head>
+  return (
+    <>
+      <Head>
+        <title>Artikel</title>
+      </Head>
 
-            <nav>
-                <Navbar />
-            </nav>
+      <nav>
+        <Navbar />
+      </nav>
 
-            <main>
+      <main>
+        s
+      </main>
 
-            </main>
-
-            <footer>
-                <Footer />
-            </footer>
-        </>
-    )
+      <footer>
+        <Footer />
+      </footer>
+    </>
+  )
 }
 
 export default Article;

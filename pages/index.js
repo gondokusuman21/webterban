@@ -40,6 +40,13 @@ export default function Home({ activitiesData, eventsData, postsData }) {
     <div>
       <Head>
         <title>Terban Kampung Wisata</title>
+        <meta property="og:title" content="TITLE OF YOUR WEBSITE" />
+        <meta property="og:image" content={COVER_IMAGE_URL} />
+        <meta property="og:description" content="DESC" />
+        <meta property="og:url" content="https://webterban.vercel.app/" />
+        <meta property="og:image:width" content='1200' />
+        <meta property="og:image:height" content='627' />
+        <meta property="og:type" content='website' />
       </Head>
 
       <nav>
