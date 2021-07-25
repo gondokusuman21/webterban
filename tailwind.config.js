@@ -53,6 +53,9 @@ module.exports = {
         '24': '6rem',
         '28': '7rem'
       },
+      minHeight: {
+        '9/10-screen': '90vh'
+      }
     },
   },
   variants: {
