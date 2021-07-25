@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
@@ -16,7 +18,8 @@ module.exports = {
       },
       colors: {
         'yellow': '#ffd900',
-        'black': '#000000'
+        'black': '#000000',
+        'amber': colors.amber
       },
       screens: {
         'xsm': '350px'

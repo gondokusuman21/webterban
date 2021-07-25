@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import postEmptyStateIllustration from '../public/post_empty_state.svg';
 
 const PostsCard = ({ data }) => {
 
@@ -66,7 +67,22 @@ const PostsCard = ({ data }) => {
       })
     )
   } else {
-    <div className="flex justify-center items-center">Tidak ada artikel.</div>
+    return (
+      <div className="mt-10">
+        <div className="flex justify-center w-full items-center flex-col">
+          <div className="w-36 h-36">
+            <Image
+              alt="Empty state"
+              src={postEmptyStateIllustration}
+              width={150}
+              height={150}
+              layout="responsive"
+            />
+          </div>
+          <h5 className="text-sm font-medium mt-4">Belum ada artikel yang bisa ditampilkan.</h5>
+        </div>
+      </div>
+    )
   }
 }
 
