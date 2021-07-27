@@ -131,11 +131,32 @@ export default function Home({ activitiesData, eventsData, postsData }) {
                </div>
             </section>
 
+            <hr className="my-10"></hr>
+
+            <section className="w-11/12 sm:w-8/12 xl:w-10/12 mx-auto lg:w-3/5">
+               <div className="flex items-center text-sm font-bold tracking-tight gap-1 mb-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <h5>LOKASI</h5>
+               </div>
+               <div className="aspect-w-16 aspect-h-9">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7906.179497571133!2d110.37409916198733!3d-7.780308429933205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58348ad2bbc1%3A0xf958601c9807f8b0!2sTerban%2C%20Kec.%20Gondokusuman%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1627390727816!5m2!1sid!2sid"
+                     width="600"
+                     height="450"
+                     style={{ border: 0 }}
+                     allowFullScreen=""
+                     loading="lazy">
+                  </iframe>
+               </div>
+            </section>
+
             <footer>
                <Footer />
             </footer>
 
-         </main>
-      </div>
+         </main >
+      </div >
    );
 }
