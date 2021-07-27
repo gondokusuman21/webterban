@@ -15,7 +15,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='bg-yellow sticky top-0 z-10'>
+    <nav id="navbar" className='z-10'>
       <div className='flex w-11/12 md:w-11/12 mx-auto py-1 text-center sm:flex items-center justify-between'>
         <Link passHref href='/'>
           <div className="cursor-pointer flex justify-center sm:justify-between items-center gap-5">
