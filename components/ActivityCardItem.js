@@ -6,7 +6,7 @@ const ActivityCardItem = ({ item, index, fadeLeft, fadeLeft2, reversed }) => {
   let fadeRight = fadeLeft ? false : true;
   let fadeRight2 = fadeLeft2 ? false : true;
   let flexRowReverse = reversed ? "flex-row-reverse" : null;
-  let classNames = `${flexRowReverse}` + " w-11/12 sm:w-8/12 mb-20 lg:w-10/12 mx-auto lg:flex lg:gap-x-20 overflow-x-hidden"
+  let classNames = `${flexRowReverse}` + " w-11/12 sm:w-8/12 mb-20 lg:w-10/12 mx-auto lg:flex lg:gap-x-20 overflow-hidden"
   let src = item.coverpicture.formats?.large?.url || item.coverpicture.formats?.medium?.url || item.coverpicture.formats?.small?.url;
 
   return (
@@ -26,7 +26,7 @@ const ActivityCardItem = ({ item, index, fadeLeft, fadeLeft2, reversed }) => {
           <h3 className="mt-2 font-bold text-2xl lg:text-3xl">{item.title}</h3>
           <p className="text-base">{item.description}</p>
           <Link passHref href={`/activity/${item.slug}`}>
-            <div className="mt-3">
+            <div className="my-3">
               <span className="text-sm text-white bg-blue-500 py-3 px-6 rounded-full hover:bg-blue-700 cursor-pointer">Baca selengkapnya</span>
             </div>
           </Link>
