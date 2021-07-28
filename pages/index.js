@@ -7,6 +7,8 @@ import ActivityCard from '../components/ActivityCard';
 import EventCard from '../components/EventCard';
 import PostsCard from '../components/PostsCard';
 import { data } from 'autoprefixer';
+import { Fade } from 'react-reveal';
+import HeroSection from '../components/HeroSection';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 const COVER_IMAGE_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1626695575/hero-image_j0bxmo.jpg";
@@ -31,7 +33,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
 
    const handleTelusuriButton = (e) => {
       e.preventDefault();
-      document.getElementById('main-section').scrollIntoView({
+      document.getElementById('yt-video').scrollIntoView({
          behavior: 'smooth'
       });
    }
@@ -55,51 +57,27 @@ export default function Home({ activitiesData, eventsData, postsData }) {
                <NavBar></NavBar>
             </nav>
             <main>
-               <section>
-                  <div className="relative">
-                     <Image
-                        alt="Cover Image"
-                        src={COVER_IMAGE_URL}
-                        width="3961"
-                        height="2150"
-                        layout="responsive"
-                     />
-                     <div className="absolute top-0 h-full w-full flex items-center justify-center flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-14 xl:gap-20">
-                        <h2 className="text-noto font-bold z-20 text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h2>
-                        <h1 className="text-white font-bold z-20 font-serif text-2xl text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Selamat Datang<br></br> di Kampung Jawa</h1>
-                        <button onClick={handleTelusuriButton} className="flex justify-around items-center bg-yellow p-2 w-40 md:w-52 lg:w-60">
-                           <h4 className="text-black text-xs md:text-sm lg:text-base">Telusuri sekarang</h4>
-                           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 lg:w-4 lg:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                           </svg>
-                        </button>
-                     </div>
-                  </div>
-               </section>
+               <HeroSection onClick={handleTelusuriButton} />
 
-               <section id="main-section" className="w-full mx-auto mt-10">
-                  <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10
-            sm:w-8/12
-            lg:w-10/12   
-          ">
+               <section id="main-section" className="w-full max- mx-auto mt-10">
+                  <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10 sm:w-8/12 lg:w-10/12">
                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
                      </svg>
                      <h5>KAMPUNG JAWA: DESTINASI WISATA DI YOGYAKARTA</h5>
                   </div>
                   <div className="mt-5 w-11/12 sm:w-8/12 lg:w-10/12 mx-auto">
-                     <div className="aspect-w-16 aspect-h-9">
-                        <iframe src="https://www.youtube.com/embed/tv0ogOmjrCA" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                     </div>
+                     <Fade big duration={1500}>
+                        <div id="yt-video" className="aspect-w-16 aspect-h-9">
+                           <iframe src="https://www.youtube.com/embed/tv0ogOmjrCA" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        </div>
+                     </Fade>
                   </div>
                </section>
                <hr className="my-10"></hr>
 
                <section>
-                  <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10
-            sm:w-8/12
-            lg:w-10/12   
-          ">
+                  <div className="flex w-11/12 mx-auto gap-1 items-center text-sm font-bold tracking-tight mt-10 sm:w-8/12 lg:w-10/12">
                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                      </svg>
@@ -107,7 +85,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
                   </div>
                   <ActivityCard data={activitiesData} />
                </section>
-               <hr className="my-10"></hr>
+               <hr className="mb-10 -mt-10"></hr>
 
                <section className="lg:container lg:w-10/12 lg:flex lg:justify-between lg:mx-auto">
                   <div className="w-11/12 sm:w-8/12 xl:w-11/12 mx-auto lg:w-3/5 lg:mx-0">
@@ -135,7 +113,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
 
                <hr className="my-10"></hr>
 
-               <section className="w-11/12 sm:w-8/12 xl:w-10/12 mx-auto lg:w-3/5">
+               <section className="w-11/12 sm:w-8/12 lg:w-10/12 xl:w-10/12 mx-auto">
                   <div className="flex items-center text-sm font-bold tracking-tight gap-1 mb-5">
                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -143,7 +121,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
                      </svg>
                      <h5>LOKASI</h5>
                   </div>
-                  <div className="aspect-w-16 aspect-h-9">
+                  <div className="w-128">
                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7906.179497571133!2d110.37409916198733!3d-7.780308429933205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58348ad2bbc1%3A0xf958601c9807f8b0!2sTerban%2C%20Kec.%20Gondokusuman%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1627390727816!5m2!1sid!2sid"
                         width="600"
                         height="450"

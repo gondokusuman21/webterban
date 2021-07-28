@@ -14,7 +14,11 @@ module.exports = {
       },
       height: {
         '1/10-screen': '10vh',
-        '9/10-screen': '90vh'
+        '9/10-screen': '90vh',
+        '128': '32rem'
+      },
+      width: {
+        '128': '32rem'
       },
       colors: {
         'yellow': '#ffd900',
