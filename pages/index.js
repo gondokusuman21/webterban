@@ -121,7 +121,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
                      </svg>
                      <h5>LOKASI</h5>
                   </div>
-                  <div className="w-128">
+                  <div className="aspect-w-16 aspect-h-9">
                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7906.179497571133!2d110.37409916198733!3d-7.780308429933205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a58348ad2bbc1%3A0xf958601c9807f8b0!2sTerban%2C%20Kec.%20Gondokusuman%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1627390727816!5m2!1sid!2sid"
                         width="600"
                         height="450"
