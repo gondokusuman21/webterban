@@ -58,23 +58,27 @@ const Card = ({ data }) => {
           {sortedData().map((item, index) => {
             let dateDetails = getDateDetails(item.date);
             let day = dateDetails.day;
+            console.log(day);
             let month = dateDetails.month;
+            let currentDate = new Date().getDate();
+            console.log(currentDate)
+            let classNames = "";
+            if (currentDate == day) classNames += "absolute -top-3 -right-8 text-xs bg-red-500 text-white p-2 rounded-full animate animate-bounce";
+            else classNames += "hidden";
             return (
-              <div key={index} className="flex mt-5 justify-start h-20 items-center w-4/5">
+              <div key={index} className="flex mt-5 justify-start h-20 items-center w-4/5  cursor-default">
                 <div className="bg-blue-200 border border-blue-200 flex justify-center items-center flex-col max-w-20 min-w-20 h-20">
                   <h5 className="text-xl font-black">{day}</h5>
                   <h5>{month}</h5>
                 </div>
-                <div className="w-4/5 flex items-center border-r border-t border-b border-blue-200 h-full">
+                <div className="relative w-4/5 flex items-center border-r border-t border-b border-blue-200 h-full">
                   <h3 className="font-bold text-sm ml-2">{item.title}</h3>
+                  <h3 className={classNames}>Sekarang</h3>
                 </div>
               </div>
             )
           })}
         </div>
-        <Link passHref href={`/article`}>
-          <button className="mt-5 lg:mt-10 xl:w-5/6 p-1 text-xs lg:text-base border border-gray-400 w-full z-20 hover:font-bold">Lihat Lebih Banyak</button>
-        </Link>
       </>
     )
   } else {

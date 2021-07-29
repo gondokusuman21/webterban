@@ -43,22 +43,27 @@ const PostsCard = ({ data }) => {
                   <Link key={index} passHref href={`/posts/${post.slug}`}>
                     <div className="flex w-full gap-4 lg:gap-0 lg:w-full xl:w-5/6 justify-between h-36 mt-10 cursor-pointer">
                       <div className="w-8/12 lg:w-7/12 xl:w-8/12 flex flex-col justify-center gap-y-2 lg:gap-y-1">
-                        <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{post.author.username}</span></h5>
                         <div>
-                          <h2 className="font-bold text-sm lg:text-xl">{post.title}</h2>
-                          <h2 className="text-gray-600 text-xs lg:text-base">{post.description}</h2>
+                          <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{post.author.username}</span></h5>
+                          {
+                            post.categories.map((category, index) => {
+                              return (
+                                <Link key={index} href={`/category/${category.name}`} passHref>
+                                  <span className=" z-20 text-xs inline lg:text-sm mr-2 text-gray-500 hover:text-blue-500 font-bold">#{category.name}</span>
+                                </Link>
+                              )
+                            })
+                          }
+                        </div>
+                        <div>
+                          <h2 className="font-bold text-base lg:text-xl">{post.title}</h2>
+                          <h2 className="hidden text-gray-600 text-xs md:block md:text-sm lg:text-base">{post.description}</h2>
                         </div>
                         <div>
                           <h5 className="text-xxs sm:text-xs text-gray-500">
                             <span>{convertDate(post.date)}</span>
                             <span> · </span>
                             <span>{getReadingTime(post.content)} menit membaca</span>
-                            <span> · </span>
-                            {
-                              post.categories.map((category, index) => {
-                                return <span className="ml-1 border rounded-full px-1 bg-gray-200" key={index}>{category.name}</span>
-                              })
-                            }
                           </h5>
                         </div>
                       </div>

@@ -6,11 +6,11 @@ const Card = ({ data }) => {
       {data.slice(0, 6).map((item, index) => {
         if (index % 2 === 0) {
           return (
-            <ActivityCardItem item={item} index={index} fadeLeft={true} fadeLeft2={false} reversed={false} />
+            <ActivityCardItem item={item} key={index} fadeLeft={true} fadeLeft2={false} reversed={false} />
           )
         } else {
           return (
-            <ActivityCardItem item={item} index={index} fadeLeft={false} fadeLeft2={true} reversed={true} />
+            <ActivityCardItem item={item} key={index} fadeLeft={false} fadeLeft2={true} reversed={true} />
           )
         }
       })}

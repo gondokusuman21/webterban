@@ -74,70 +74,73 @@ const Article = ({ postsData, singlePostData, categoryData }) => {
         <hr className="my-5 lg:hidden"></hr>
         <section className="lg:w-8/12 mt-5">
           <div>
+            <Image
+              alt="Main image"
+              src={mainImage.url}
+              width={mainImage.width}
+              height={mainImage.height}
+              layout="responsive"
+            />
+          </div>
+          <div className="mt-3 flex flex-col gap-y-2">
             <div>
-              <Image
-                alt="Main image"
-                src={mainImage.url}
-                width={mainImage.width}
-                height={mainImage.height}
-                layout="responsive"
-              />
-            </div>
-            <div className="mt-3 flex flex-col gap-y-2">
               <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{singlePostData.author.username}</span></h5>
-              <h3 className="font-black text-lg">{singlePostData.title}</h3>
-              <p className="text-base text-gray-600">{singlePostData.description}</p>
-              <h5 className="text-xs sm:text-sm text-gray-500">
-                <span>{convertDate(singlePostData.date)}</span>
-                <span> · </span>
-                <span>{getReadingTime(singlePostData.content)} menit membaca</span>
-                <span> · </span>
-                {
-                  singlePostData.categories.map((category, index) => {
-                    return <span className="ml-1 border rounded-full px-1 bg-gray-200" key={index}>{category.name}</span>
-                  })
-                }
-              </h5>
+              {
+                singlePostData.categories.map((category, index) => {
+                  return (
+                    <Link key={index} href={`/category/${category.name}`} passHref>
+                      <span className="mr-1 z-20 text-xs lg:text-sm text-gray-500 hover:text-blue-500 cursor-pointer" key={index}>#{category.name}</span>
+                    </Link>
+                  )
+                })
+              }
             </div>
-            <h4 className="text-sm font-bold mt-10 -mb-5">ARTIKEL LAINNYA</h4>
-            {
-              postsData.map((post, index) => {
-                let url = post.picture.formats?.large?.url || post.picture.formats?.medium?.url || post.picture.formats?.small?.url;
-                return (
-                  <>
-                    <Link key={index} passHref href={`/posts/${post.slug}`}>
-                      <div className="flex w-full gap-4 lg:gap-0 lg:w-full xl:w-5/6 justify-between h-36 mt-10 cursor-pointer">
-                        <div className="w-8/12 lg:w-7/12 xl:w-8/12 flex flex-col justify-center gap-y-2 lg:gap-y-1">
-                          <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{post.author.username}</span></h5>
-                          <div>
-                            <h2 className="font-black text-base lg:text-xl">{post.title}</h2>
-                            <h2 className="text-gray-600 text-xs lg:text-base">{post.description}</h2>
-                          </div>
-                          <div>
-                            <h5 className="text-xxs sm:text-xs text-gray-500">
-                              <span>{convertDate(post.date)}</span>
-                              <span> · </span>
-                              <span>{getReadingTime(post.content)} menit membaca</span>
-                              <span> · </span>
-                              {
-                                post.categories.map((category, index) => {
-                                  return <span className="ml-1 border rounded-full px-1 bg-gray-200" key={index}>{category.name}</span>
-                                })
-                              }
-                            </h5>
-                          </div>
+            <h3 className="font-black text-lg">{singlePostData.title}</h3>
+            <p className="text-base text-gray-600">{singlePostData.description}</p>
+            <h5 className="text-xs sm:text-sm text-gray-500">
+              <span>{convertDate(singlePostData.date)}</span>
+              <span> · </span>
+              <span>{getReadingTime(singlePostData.content)} menit membaca</span>
+            </h5>
+          </div>
+          <h4 className="text-sm font-bold mt-10 -mb-5">ARTIKEL LAINNYA</h4>
+          {
+            postsData.map((post, index) => {
+              let url = post.picture.formats?.large?.url || post.picture.formats?.medium?.url || post.picture.formats?.small?.url;
+              return (
+                <>
+                  <Link key={index} passHref href={`/posts/${post.slug}`}>
+                    <div className="flex w-full gap-4 lg:gap-0 lg:w-full xl:w-5/6 justify-between h-36 mt-10 cursor-pointer">
+                      <div className="w-8/12 lg:w-7/12 xl:w-8/12 flex flex-col justify-center gap-y-2 lg:gap-y-1">
+                        <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{post.author.username}</span></h5>
+                        <div>
+                          <h2 className="font-black text-base lg:text-xl">{post.title}</h2>
+                          <h2 className="text-gray-600 text-xs lg:text-base">{post.description}</h2>
                         </div>
-                        <div className="container relative w-48">
-                          <Image alt="Image" src={url} objectFit="cover"
-                            layout="fill"></Image>
+                        <div>
+                          <h5 className="text-xxs sm:text-xs text-gray-500">
+                            <span>{convertDate(post.date)}</span>
+                            <span> · </span>
+                            <span>{getReadingTime(post.content)} menit membaca</span>
+                            <span> · </span>
+                            {
+                              post.categories.map((category, index) => {
+                                return <span className="ml-1 border rounded-full px-1 bg-gray-200" key={index}>{category.name}</span>
+                              })
+                            }
+                          </h5>
                         </div>
                       </div>
-                    </Link>
-                  </>
-                )
-              })
-            }
-          </div>
+                      <div className="container relative w-48">
+                        <Image alt="Image" src={url} objectFit="cover"
+                          layout="fill"></Image>
+                      </div>
+                    </div>
+                  </Link>
+                </>
+              )
+            })
+          }
         </section>
       </main>
 

@@ -2,7 +2,7 @@ import { Fade } from 'react-reveal';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ActivityCardItem = ({ item, index, fadeLeft, fadeLeft2, reversed }) => {
+const ActivityCardItem = ({ item, key, fadeLeft, fadeLeft2, reversed }) => {
   let fadeRight = fadeLeft ? false : true;
   let fadeRight2 = fadeLeft2 ? false : true;
   let flexRowReverse = reversed ? "flex-row-reverse" : null;
@@ -10,7 +10,7 @@ const ActivityCardItem = ({ item, index, fadeLeft, fadeLeft2, reversed }) => {
   let src = item.coverpicture.formats?.large?.url || item.coverpicture.formats?.medium?.url || item.coverpicture.formats?.small?.url;
 
   return (
-    <div key={index} className={classNames}>
+    <div key={key} className={classNames}>
       <Fade left={fadeLeft} right={fadeRight}>
         <div className="relative w-full h-60 lg:h-80 lg:w-96 xl:h-96 xl:w-128">
           <Image
