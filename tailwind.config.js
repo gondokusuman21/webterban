@@ -42,6 +42,7 @@ module.exports = {
         'dark-blue': '#0064FF',
         'med-blue': '#4F93FC',
         'light-blue': '#B2D0FE',
+        'hero-blue': '#578ae8',
         'black': '#000000',
         'amber': colors.amber
       },

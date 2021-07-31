@@ -11,6 +11,7 @@ import { data } from 'autoprefixer';
 import { Fade } from 'react-reveal';
 import HeroSection from '../components/HeroSection';
 import YoutubeSection from '../components/YoutubeSection';
+import ActivitySection from '../components/ActivitySection';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 const HERO_IMAGE_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1627722258/heroimage_a6uohw_mwno4f.webp";
@@ -58,7 +59,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
 
             <section className="relative">
                <NavBar />
-               <div><img alt="Test" src={HERO_IMAGE_URL}></img></div>
+               <div className="relative h-96 lg:h-9/10-screen w-full" ><Image alt="Test" src={HERO_IMAGE_URL} layout="fill" objectFit="fill" /></div>
                <div className="absolute flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-14 xl:gap-20 top-0 left-0 w-full h-full items-center justify-center">
                   <h1 className="text-noto font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h1>
                   <h1 className="text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">Selamat Datang<br></br>di Kampung Jawa</h1>
@@ -66,7 +67,7 @@ export default function Home({ activitiesData, eventsData, postsData }) {
             </section>
 
             <YoutubeSection />
-
+            <ActivitySection activitiesData={activitiesData} />
          </body>
          {/* <body>
             <nav>

@@ -2,15 +2,15 @@ import { Fade } from 'react-reveal';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ActivityCardItem = ({ item, key, fadeLeft, fadeLeft2, reversed }) => {
+const ActivityCardItem = ({ item, fadeLeft, fadeLeft2, reversed }) => {
   let fadeRight = fadeLeft ? false : true;
   let fadeRight2 = fadeLeft2 ? false : true;
   let flexRowReverse = reversed ? "flex-row-reverse" : null;
-  let classNames = `${flexRowReverse}` + " w-11/12 sm:w-8/12 mb-20 lg:w-10/12 mx-auto lg:flex lg:gap-x-20 overflow-hidden"
+  let classNames = `${flexRowReverse}` + " w-11/12 mb-10 md:mb-20 mx-auto lg:flex lg:gap-x-20 overflow-hidden"
   let src = item.coverpicture.formats?.large?.url || item.coverpicture.formats?.medium?.url || item.coverpicture.formats?.small?.url;
 
   return (
-    <div key={key} className={classNames}>
+    <div className={classNames}>
       <Fade left={fadeLeft} right={fadeRight}>
         <div className="relative w-full h-60 lg:h-80 lg:w-96 xl:h-96 xl:w-128">
           <Image
@@ -23,7 +23,7 @@ const ActivityCardItem = ({ item, key, fadeLeft, fadeLeft2, reversed }) => {
       </Fade>
       <Fade left={fadeLeft2} right={fadeRight2}>
         <div className="w-full flex flex-col gap-y-2 justify-center lg:w-7/12 xl:w-7/12">
-          <h3 className="mt-2 font-bold text-2xl lg:text-3xl">{item.title}</h3>
+          <h3 className="mt-2 font-bold text-md lg:text-2xl">{item.title}</h3>
           <p className="text-base">{item.description}</p>
           <Link passHref href={`/activity/${item.slug}`}>
             <div className="my-3">
