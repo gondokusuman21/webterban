@@ -58,7 +58,7 @@ const Navbar = () => {
             </button>
           </div>
           <div className="absolute top-10 right-10">
-            <button onClick={() => setSearchOpened(false)}>
+            <button onClick={() => { setSearchOpened(false) }}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -73,8 +73,8 @@ const Navbar = () => {
             <Link href="/" passHref><div className="hover:text-orange font-medium text-black tracking-widest cursor-pointer transition duration-300">BERANDA</div></Link>
             <Link href="/" passHref><div className="hover:text-orange font-medium text-black tracking-widest cursor-pointer transition duration-300">KAMPUNG JAWA</div></Link>
             <Link href="/" passHref><div className="hover:text-orange font-medium text-black tracking-widest cursor-pointer transition duration-300">ARTIKEL</div></Link>
-            <div className="mr-16 flex gap-x-3 font-medium hover:text-orange text-black tracking-widest cursor-pointer">
-              <button type="submit" onClick={() => setSearchOpened(true)}>
+            <div onClick={() => setSearchOpened(true)} className="mr-16 flex gap-x-3 font-medium hover:text-orange text-black tracking-widest cursor-pointer">
+              <button type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-black hover:text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -82,7 +82,7 @@ const Navbar = () => {
               <div>CARI ARTIKEL</div>
             </div>
           </div>
-          <svg onClick={handleMenuButtonClick} xmlns="http://www.w3.org/2000/svg" className="cursor-pointer absolute top-5 right-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg onClick={handleMenuButtonClick} xmlns="http://www.w3.org/2000/svg" className="cursor-pointer absolute top-10 right-10 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </div>
