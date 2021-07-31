@@ -59,7 +59,9 @@ export default function Home({ activitiesData, eventsData, postsData }) {
 
             <section className="relative">
                <NavBar />
-               <div className="relative h-96 lg:h-9/10-screen w-full" ><Image alt="Test" src={HERO_IMAGE_URL} layout="fill" objectFit="fill" /></div>
+               <div className="relative h-96 md:h-128 lg:h-9/10-screen w-full">
+                  <Image alt="Test" src={HERO_IMAGE_URL} layout="fill" objectFit="cover" />
+               </div>
                <div className="absolute flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-14 xl:gap-20 top-0 left-0 w-full h-full items-center justify-center">
                   <h1 className="text-noto font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h1>
                   <h1 className="text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">Selamat Datang<br></br>di Kampung Jawa</h1>
@@ -67,7 +69,32 @@ export default function Home({ activitiesData, eventsData, postsData }) {
             </section>
 
             <YoutubeSection />
+
             <ActivitySection activitiesData={activitiesData} />
+
+            <section className="lg:container lg:w-10/12 lg:flex lg:justify-between lg:mx-auto">
+               <div className="w-11/12 sm:w-8/12 xl:w-11/12 mx-auto lg:w-3/5 lg:mx-0">
+                  <div className="flex items-center text-sm font-bold tracking-tight gap-1">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                     </svg>
+                     <h5>ARTIKEL TERBARU</h5>
+                  </div>
+                  <PostsCard data={postsData} />
+               </div>
+               <hr className="my-10 lg:hidden"></hr>
+               <div className="w-11/12 sm:w-8/12 lg:w-2/6 mx-auto lg:mx-0">
+                  <div className="flex items-center text-sm font-bold tracking-tight gap-1">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                     </svg>
+                     <h5>EVENT TERBARU</h5>
+                  </div>
+                  <div>
+                     <EventCard data={eventsData} />
+                  </div>
+               </div>
+            </section>
          </body>
          {/* <body>
             <nav>

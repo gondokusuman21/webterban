@@ -2,8 +2,8 @@ import Fade from 'react-reveal';
 
 const YoutubeSection = () => {
   return (
-    <section className="pt-5 lg:pt-10 bg-light-blue">
-      <div className="flex w-11/12 mx-auto items-center text-lg lg:text-3xl font-bold tracking-tight">
+    <section className="py-5 lg:py-10 bg-light-blue">
+      <div className="flex font-serif w-11/12 mx-auto items-center text-lg lg:text-3xl font-bold tracking-tight">
         <h5>Kampung Jawa : Destinasi Wisata di Yogyakarta</h5>
       </div>
       <div className="mt-2 w-11/12 mx-auto">
