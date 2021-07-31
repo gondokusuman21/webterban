@@ -5,8 +5,24 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'sans': ['Inter'],
+      'sans': ['Inter', 'Helvetica', 'Arial'],
       'serif': ['Roboto Slab'],
+      'handwriting': ['Norican'],
+    },
+    scale: {
+      '0': '0',
+      '25': '.25',
+      '35': '.35',
+      '50': '.5',
+      '75': '.75',
+      '90': '.9',
+      '95': '.95',
+      '100': '1',
+      '105': '1.05',
+      '110': '1.1',
+      '125': '1.25',
+      '150': '1.5',
+      '200': '2',
     },
     extend: {
       fontSize: {
@@ -21,7 +37,11 @@ module.exports = {
         '128': '32rem'
       },
       colors: {
-        'yellow': '#ffd900',
+        'yellow': '#FFB63A',
+        'orange': '#FF5E00',
+        'dark-blue': '#0064FF',
+        'med-blue': '#4F93FC',
+        'light-blue': '#B2D0FE',
         'black': '#000000',
         'amber': colors.amber
       },
