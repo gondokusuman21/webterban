@@ -17,86 +17,80 @@ const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 const HERO_IMAGE_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1627722258/heroimage_a6uohw_mwno4f.webp";
 
 export const getStaticProps = async () => {
-   const activitiesResponse = await fetch(`${STRAPI_URL}/activities`);
-   const activitiesData = await activitiesResponse.json();
+  const activitiesResponse = await fetch(`${STRAPI_URL}/activities`);
+  const activitiesData = await activitiesResponse.json();
 
-   const eventsResponse = await fetch(`${STRAPI_URL}/events`);
-   const eventsData = await eventsResponse.json();
+  const eventsResponse = await fetch(`${STRAPI_URL}/events`);
+  const eventsData = await eventsResponse.json();
 
-   const postsResponse = await fetch(`${STRAPI_URL}/posts`);
-   const postsData = await postsResponse.json();
+  const postsResponse = await fetch(`${STRAPI_URL}/posts`);
+  const postsData = await postsResponse.json();
 
-   return {
-      props: { activitiesData, eventsData, postsData },
-      revalidate: 3600
-   };
+  return {
+    props: { activitiesData, eventsData, postsData },
+    revalidate: 3600
+  };
 };
 
 export default function Home({ activitiesData, eventsData, postsData }) {
 
-   const handleTelusuriButton = (e) => {
-      e.preventDefault();
-      document.getElementById('yt-video').scrollIntoView({
-         behavior: 'smooth'
-      });
-   }
+  const handleTelusuriButton = (e) => {
+    e.preventDefault();
+    document.getElementById('yt-video').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
 
-   return (
-      <>
-         <head>
-            <Head>
-               <title>Terban Kampung Wisata</title>
-               <meta property="og:title" content="TITLE OF YOUR WEBSITE" />
-               <meta property="og:image" content={HERO_IMAGE_URL} />
-               <meta property="og:description" content="DESC" />
-               <meta property="og:url" content="https://webterban.vercel.app/" />
-               <meta property="og:image:width" content='1200' />
-               <meta property="og:image:height" content='627' />
-               <meta property="og:type" content='website' />
-            </Head>
-         </head>
-         <body>
+  return (
+    <>
+      <head>
+        <Head>
+          <title>Terban Kampung Wisata</title>
+          <meta property="og:title" content="TITLE OF YOUR WEBSITE" />
+          <meta property="og:image" content={HERO_IMAGE_URL} />
+          <meta property="og:description" content="DESC" />
+          <meta property="og:url" content="https://webterban.vercel.app/" />
+          <meta property="og:image:width" content='1200' />
+          <meta property="og:image:height" content='627' />
+          <meta property="og:type" content='website' />
+        </Head>
+      </head>
+      <body>
 
-            <section className="relative">
-               <NavBar />
-               <div className="relative h-96 md:h-128 lg:h-9/10-screen w-full">
-                  <Image alt="Test" src={HERO_IMAGE_URL} layout="fill" objectFit="cover" />
-               </div>
-               <div className="absolute flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-14 xl:gap-20 top-0 left-0 w-full h-full items-center justify-center">
-                  <h1 className="text-noto font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h1>
-                  <h1 className="text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">Selamat Datang<br></br>di Kampung Jawa</h1>
-               </div>
-            </section>
+        <section className="relative">
+          <NavBar />
+          <div className="relative h-96 md:h-128 lg:h-9/10-screen w-full">
+            <Image alt="Test" src={HERO_IMAGE_URL} layout="fill" objectFit="cover" />
+          </div>
+          <div className="absolute flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-14 xl:gap-20 top-0 left-0 w-full h-full items-center justify-center">
+            <h1 className="text-noto font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h1>
+            <h1 className="text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">Selamat Datang<br></br>di Kampung Jawa</h1>
+          </div>
+        </section>
 
-            <YoutubeSection />
+        <YoutubeSection />
 
-            <ActivitySection activitiesData={activitiesData} />
+        <ActivitySection activitiesData={activitiesData} />
 
-            <section className="lg:container lg:w-10/12 lg:flex lg:justify-between lg:mx-auto">
-               <div className="w-11/12 sm:w-8/12 xl:w-11/12 mx-auto lg:w-3/5 lg:mx-0">
-                  <div className="flex items-center text-sm font-bold tracking-tight gap-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                     </svg>
-                     <h5>ARTIKEL TERBARU</h5>
-                  </div>
-                  <PostsCard data={postsData} />
-               </div>
-               <hr className="my-10 lg:hidden"></hr>
-               <div className="w-11/12 sm:w-8/12 lg:w-2/6 mx-auto lg:mx-0">
-                  <div className="flex items-center text-sm font-bold tracking-tight gap-1">
-                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                     </svg>
-                     <h5>EVENT TERBARU</h5>
-                  </div>
-                  <div>
-                     <EventCard data={eventsData} />
-                  </div>
-               </div>
-            </section>
-         </body>
-         {/* <body>
+        <section className="lg:container lg:w-10/12 lg:flex lg:justify-between lg:mx-auto">
+          <div className="w-11/12 sm:w-8/12 xl:w-11/12 mx-auto lg:w-3/5 lg:mx-0">
+            <div className="flex items-center font-serif w-11/12 mx-autotext-lg lg:text-3xl font-bold tracking-tight gap-1">
+              <h5>Artikel Terbaru</h5>
+            </div>
+            <PostsCard data={postsData} />
+          </div>
+          <hr className="my-10 lg:hidden"></hr>
+          <div className="w-11/12 sm:w-8/12 lg:w-2/6 mx-auto lg:mx-0">
+            <div className="flex items-center font-serif w-11/12 mx-autotext-lg lg:text-3xl font-bold tracking-tight gap-1">
+              <h5>Event Terbaru</h5>
+            </div>
+            <div>
+              <EventCard data={eventsData} />
+            </div>
+          </div>
+        </section>
+      </body>
+      {/* <body>
             <nav>
                <NavBar></NavBar>
             </nav>
@@ -180,11 +174,11 @@ export default function Home({ activitiesData, eventsData, postsData }) {
             </main >
          </body> */}
 
-         <footer>
-            <Footer />
-         </footer>
+      <footer>
+        <Footer />
+      </footer>
 
 
-      </>
-   );
+    </>
+  );
 }
