@@ -1,7 +1,4 @@
 import Link from 'next/link';
-import LogoTerban from '../public/logo-terban.svg';
-import LogoUnit from '/public/logo-unit.svg';
-import Image from 'next/image';
 import { useState } from 'react';
 import { Fade } from 'react-reveal';
 
@@ -11,7 +8,6 @@ const Navbar = () => {
   const [isSearchOpened, setSearchOpened] = useState(false);
   const LOGO_UNIT_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1627709077/logounit_h1xdfo.png";
 
-
   const handleMenuButtonClick = () => {
     const menuItems = document.querySelector('.mobile-menu-items');
     menuItems.classList.toggle('hidden');
@@ -20,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="z-10 hidden md:block absolute top-0 w-full">
+      <nav id="desktop-nav" className="z-10 hidden md:block absolute top-0 w-full">
         <div className="h-32 flex items-center justify-between">
           <div className="flex gap-x-10 items-center">
             <img className="transform scale-35" alt="Logo KKN" src={LOGO_UNIT_URL}></img>
@@ -88,60 +84,6 @@ const Navbar = () => {
         </div>
       </Fade>
     </>
-    // <>
-    //   <nav id="navbar" className='z-10'>
-    //     <div className='flex w-11/12 md:w-11/12 mx-auto py-1 text-center sm:flex items-center justify-between'>
-    //       <Link passHref href='/'>
-    //         <div className="cursor-pointer flex justify-center sm:justify-between items-center gap-5">
-    //           <div>
-    //             <Image
-    //               alt='Logo Kelurahan Terban'
-    //               src={LogoTerban}
-    //             />
-    //           </div>
-    //           <div>
-    //             <Image
-    //               alt='Logo Unit Gondokusuman'
-    //               src={LogoUnit}
-    //             />
-    //           </div>
-    //           <span className="hidden sm:block text-lg tracking-widest font-extrabold">
-    //             KELURAHAN TERBAN
-    //           </span>
-    //         </div>
-    //       </Link>
-
-    //       <div className='hidden lg:block text-sm font-medium tracking-widest'>
-    //         <Link href='/'>
-    //           <a className='mr-10'>KAMPUNG JAWA</a>
-    //         </Link>
-    //         <Link href='/article'>
-    //           <a className='mr-10'>BERANDA</a>
-    //         </Link>
-    //         <Link href='/article'>
-    //           <a className=''>ARTIKEL</a>
-    //         </Link>
-    //       </div>
-
-
-    //     </div>
-
-    //     {/* Mobile Menu Items */}
-    //     <Fade>
-    //       <div className="mobile-menu-items hidden lg:hidden">
-    //         <Link href='/'>
-    //           <a className='border-t border-black block p-4 opacity-70 hover:opacity-100'>KAMPUNG JAWA</a>
-    //         </Link>
-    //         <Link href='/'>
-    //           <a className='border-t border-black block p-4 opacity-70 hover:opacity-100'>BERANDA</a>
-    //         </Link>
-    //         <Link href='/article'>
-    //           <a className='border-b border-t border-black block p-4 opacity-70 hover:opacity-100'>ARTIKEL</a>
-    //         </Link>
-    //       </div>
-    //     </Fade>
-    //   </nav>
-    // </>
   );
 };
 
