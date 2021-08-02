@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
+import NavbarFixed from '../../components/NavbarFixed';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 
@@ -57,7 +57,7 @@ const Article = ({ postsData, singlePostData, categoryData }) => {
       </Head>
 
       <nav>
-        <Navbar />
+        <NavbarFixed />
       </nav>
 
       <main className="w-11/12 mx-auto mt-5 lg:flex lg:flex-row-reverse lg:w-11/12 lg:justify-between xl:w-3/4">

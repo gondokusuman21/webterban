@@ -51,11 +51,10 @@ const ActivityDetailsPage = ({ activities }) => {
       </nav>
 
       <main>
-        <div className="container w-96 mt-5 mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
-          <h1 className="font-serif text-3xl lg:text-6xl lg:mt-10 md:text-5xl sm:text-4xl text-center font-extrabold">{title}</h1>
-          <h5 className="font-sans text-sm lg:text-xl lg:mb-10 md:text-lg sm:text-base text-center my-4">{description}</h5>
+        <div className="mt-5 w-11/12 mx-auto lg:w-7/12 md:w-10/12">
+          <h1 className="font-serif text-2xl lg:text-6xl lg:mt-10 md:text-5xl sm:text-4xl text-center font-extrabold">{title}</h1>
         </div>
-        <div className="container w-96 mt-5 mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
+        <div className="my-5 mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
           <Image
             alt="Main image"
             layout="responsive"
@@ -64,9 +63,10 @@ const ActivityDetailsPage = ({ activities }) => {
             src={coverpicture.formats.large.url}
           />
         </div>
-        <div className="container mx-auto lg:w-7/12 md:w-10/12 sm:w-11/12">
+        <div className="w-11/12 mx-auto lg:w-7/12 md:w-10/12">
           <article>
             <div className="prose-sm lg:prose-lg">
+              <h5 className="font-sans text-sm lg:text-xl lg:mb-10 md:text-lg sm:text-base my-4">{description}</h5>
               {parse(marked(content))}
             </div>
           </article>

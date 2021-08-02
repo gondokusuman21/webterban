@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Fade } from 'react-reveal';
+import { useRouter } from 'next/router';
 
 const NavbarFixed = () => {
 
-	const [isMenuOpened, setMenuOpened] = useState(false);
+	const router = useRouter();
 	const [isSearchOpened, setSearchOpened] = useState(false);
+	const [isMenuOpened, setMenuOpened] = useState(false);
+	const [searchArticleInput, setSearchArticleInput] = useState("");
 	const LOGO_UNIT_URL = "https://res.cloudinary.com/gondokusuman-21/image/upload/v1627709077/logounit_h1xdfo.png";
 
 	const handleMenuButtonClick = () => {
@@ -14,10 +17,26 @@ const NavbarFixed = () => {
 		setMenuOpened(isMenuOpened => !isMenuOpened);
 	}
 
+	const handleSearchArticleInput = (e) => {
+		setSearchArticleInput(e.target.value);
+	}
+
+	const handleSearchButtonClick = (e) => {
+		e.preventDefault();
+		router.push(`/posts/search?keyword=${searchArticleInput}`);
+	}
+
+	const handleSearchButtonEnter = (e) => {
+		if (e.key === "Enter") {
+			e.preventDefault();
+			router.push(`/posts/search?keyword=${searchArticleInput}`);
+		}
+	}
+
 	return (
 		<>
-			<nav id="desktop-nav" className="bg-blue-500 z-10 hidden md:block w-full">
-				<div className="h-32 flex items-center justify-between">
+			<nav id="desktop-nav" className="py-2 bg-blue-500 z-10 hidden md:block w-full">
+				<div className="h-20 flex items-center justify-between">
 					<div className="flex gap-x-10 items-center">
 						<img className="transform scale-35" alt="Logo KKN" src={LOGO_UNIT_URL}></img>
 						<Link href="/" passHref><div className="font-medium text-white tracking-widest cursor-pointer transition duration-300 hover:text-black">BERANDA</div></Link>
@@ -34,7 +53,7 @@ const NavbarFixed = () => {
 				</div>
 			</nav >
 
-			<nav className="z-10 absolute flex items-center w-full mt-2 justify-between md:hidden">
+			<nav className="bg-blue-500 z-10 relative flex items-center w-full justify-between md:hidden">
 				<img className="transform h-16 scale-75 ml-3" alt="Logo KKN" src={LOGO_UNIT_URL}></img>
 				<div onClick={handleMenuButtonClick} className="mr-3 cursor-pointer">
 					<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white hover:text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -46,8 +65,8 @@ const NavbarFixed = () => {
 				isSearchOpened &&
 				<div id="search-bar" className="z-30 flex justify-center items-center h-screen w-screen bg-gray-50 fixed">
 					<div className="flex pt-2 relative w-56 text-gray-600">
-						<input className="border-2 border-gray-300 bg-white h-10 pl-2 pr-9  text-sm focus:outline-none focus:ring-2 focus:ring-dark-blue focus:border-transparent" type="search" name="search" placeholder="Search"></input>
-						<button type="submit" className="absolute top-18px right-1">
+						<input onKeyPress={handleSearchButtonEnter} onChange={handleSearchArticleInput} className="border-2 border-gray-300 bg-white h-10 pl-2 pr-9  text-sm focus:outline-none focus:ring-2 focus:ring-dark-blue focus:border-transparent" type="search" name="search" placeholder="Cari Artikel"></input>
+						<button onClick={handleSearchButtonClick} type="submit" className="absolute top-18px right-1">
 							<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
 								<path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
 							</svg>

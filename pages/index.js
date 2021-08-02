@@ -4,7 +4,6 @@ import Image from 'next/image';
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import heroImage from '../public/heroimage.png';
-import ActivityCard from '../components/ActivityCard';
 import EventCard from '../components/EventCard';
 import PostsCard from '../components/PostsCard';
 import { data } from 'autoprefixer';
