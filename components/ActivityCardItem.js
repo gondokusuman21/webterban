@@ -6,7 +6,7 @@ const ActivityCardItem = ({ item, fadeLeft, fadeLeft2, reversed }) => {
   let fadeRight = fadeLeft ? false : true;
   let fadeRight2 = fadeLeft2 ? false : true;
   let flexRowReverse = reversed ? "flex-row-reverse" : null;
-  let classNames = `${flexRowReverse}` + " w-11/12 mb-10 md:mb-20 mx-auto lg:flex lg:gap-x-20 overflow-hidden"
+  let classNames = `${flexRowReverse}` + " w-11/12 md:w-8/12 mb-10 md:mb-5 mx-auto lg:flex lg:gap-x-20 overflow-hidden"
   let src = item.coverpicture.formats?.large?.url || item.coverpicture.formats?.medium?.url || item.coverpicture.formats?.small?.url;
 
   return (

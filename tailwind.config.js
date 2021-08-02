@@ -7,7 +7,7 @@ module.exports = {
     fontFamily: {
       'sans': ['Inter', 'Helvetica', 'Arial'],
       'serif': ['Roboto Slab'],
-      'handwriting': ['Norican'],
+      'handwriting': ['Leckerli One'],
     },
     scale: {
       '0': '0',
@@ -37,6 +37,8 @@ module.exports = {
         '128': '32rem'
       },
       colors: {
+        'dark-green': '#006960',
+        'dark-red': '#FF1E00',
         'yellow': '#FFB63A',
         'orange': '#FF5E00',
         'dark-blue': '#0064FF',

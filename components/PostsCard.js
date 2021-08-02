@@ -44,12 +44,11 @@ const PostsCard = ({ data }) => {
                     <div className="flex w-full gap-4 lg:gap-0 lg:w-full xl:w-5/6 justify-between h-36 mt-10 cursor-pointer">
                       <div className="w-8/12 lg:w-7/12 xl:w-8/12 flex flex-col justify-center gap-y-2 lg:gap-y-1">
                         <div>
-                          <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{post.author.username}</span></h5>
                           {
                             post.categories.map((category, index) => {
                               return (
                                 <Link key={index} href={`/category/${category.name}`} passHref>
-                                  <span className=" z-20 text-xs inline lg:text-sm mr-2 text-gray-500 hover:text-blue-500 font-bold">#{category.name}</span>
+                                  <span className=" z-20 text-xs inline lg:text-sm mr-2 text-gray-50 hover:text-blue-500 font-bold">#{category.name}</span>
                                 </Link>
                               )
                             })

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import marked from 'marked';
 import parse from 'html-react-parser';
-import Navbar from '../../components/Navbar';
+import NavbarFixed from '../../components/NavbarFixed';
 import Footer from '../../components/Footer';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
@@ -47,7 +47,7 @@ const ActivityDetailsPage = ({ activities }) => {
       </Head>
 
       <nav>
-        <Navbar />
+        <NavbarFixed />
       </nav>
 
       <main>
