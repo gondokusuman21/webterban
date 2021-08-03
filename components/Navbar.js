@@ -41,7 +41,7 @@ const Navbar = () => {
             <img className="transform scale-35" alt="Logo KKN" src={LOGO_UNIT_URL}></img>
             <Link href="/" passHref><div className="font-medium text-white tracking-widest cursor-pointer transition duration-300 hover:text-black">BERANDA</div></Link>
             <Link href="/" passHref><div className="font-medium text-white tracking-widest cursor-pointer transition duration-300 hover:text-black">KAMPUNG JAWA</div></Link>
-            <Link href="/" passHref><div className="font-medium text-white tracking-widest cursor-pointer transition duration-300 hover:text-black">ARTIKEL</div></Link>
+            <Link href="/article" passHref><div className="font-medium text-white tracking-widest cursor-pointer transition duration-300 hover:text-black">ARTIKEL</div></Link>
           </div>
           <div className="mr-16">
             <button type="submit" onClick={() => setSearchOpened(true)}>
