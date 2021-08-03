@@ -3,7 +3,7 @@ import Image from 'next/image';
 import postEmptyStateIllustration from '../public/post_empty_state.svg';
 import Fade from 'react-reveal';
 
-const PostsCard = ({ data }) => {
+const PostsCard = ({ data, showButton }) => {
 
   const getReadingTime = (content) => {
     let str = content.replace(/(^\s*)|(\s*$)/gi, "").replace(/[ ]{2,}/gi, " ").replace(/\n /, "\n");
@@ -77,9 +77,12 @@ const PostsCard = ({ data }) => {
             )
           })
         }
-        <Link passHref href={`/article`}>
-          <button className="mt-5 lg:mt-10 xl:w-5/6 p-1 text-xs lg:text-base border border-gray-400 w-full z-20 hover:font-bold">Lihat Lebih Banyak</button>
-        </Link>
+        {
+          showButton &&
+          <Link passHref href={`/article`}>
+            <button className="mt-5 lg:mt-10 xl:w-5/6 p-1 text-xs lg:text-base border border-gray-400 w-full z-20 hover:font-bold">Lihat Lebih Banyak</button>
+          </Link>
+        }
       </>
     )
   } else {
