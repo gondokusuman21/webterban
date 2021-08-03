@@ -48,7 +48,7 @@ const PostsCard = ({ data }) => {
                             post.categories.map((category, index) => {
                               return (
                                 <Link key={index} href={`/category/${category.name}`} passHref>
-                                  <span className=" z-20 text-xs inline lg:text-sm mr-2 text-gray-50 hover:text-blue-500 font-bold">#{category.name}</span>
+                                  <span className=" z-20 text-xs inline lg:text-sm mr-2 font-bold">#{category.name}</span>
                                 </Link>
                               )
                             })
@@ -56,10 +56,10 @@ const PostsCard = ({ data }) => {
                         </div>
                         <div>
                           <h2 className="font-bold text-base lg:text-xl">{post.title}</h2>
-                          <h2 className="hidden text-gray-600 text-xs md:block md:text-sm lg:text-base">{post.description}</h2>
+                          <h2 className="hidden text-xs md:block md:text-sm lg:text-base">{post.description}</h2>
                         </div>
                         <div>
-                          <h5 className="text-xxs sm:text-xs text-gray-500">
+                          <h5 className="text-xxs sm:text-xs">
                             <span>{convertDate(post.date)}</span>
                             <span> · </span>
                             <span>{getReadingTime(post.content)} menit membaca</span>

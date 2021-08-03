@@ -27,7 +27,7 @@ const ActivityCardItem = ({ item, fadeLeft, fadeLeft2, reversed }) => {
           <p className="text-base">{item.description}</p>
           <Link passHref href={`/activity/${item.slug}`}>
             <div className="my-3">
-              <span className="text-sm text-white bg-blue-500 py-3 px-6 rounded-full hover:bg-blue-700 cursor-pointer">Baca selengkapnya</span>
+              <span className="text-sm text-white bg-blue-500 py-3 px-6 rounded-full hover:bg-blue-700 cursor-pointer">Lihat selengkapnya</span>
             </div>
           </Link>
         </div>

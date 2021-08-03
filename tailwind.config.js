@@ -37,6 +37,7 @@ module.exports = {
         '128': '32rem'
       },
       colors: {
+        'light-gray': '#EFEFEF',
         'dark-green': '#006960',
         'dark-red': '#FF1E00',
         'yellow': '#FFB63A',

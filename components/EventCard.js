@@ -51,7 +51,8 @@ const Card = ({ data }) => {
     return 0;
   }
 
-  if (data.length > 0) {
+  console.log(sortedData());
+  if (sortedData().length > 0) {
     return (
       <>
         <div>
