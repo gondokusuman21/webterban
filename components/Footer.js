@@ -5,18 +5,17 @@ import logoUGM from '../public/logo-ugm.png';
 import logoUnitKKN from '../public/logo-unit.svg';
 
 const Footer = () => {
-  const year = new Date().getFullYear();
 
   return (
     <footer className='bg-light-blue pt-2 pb-5'>
-      <div className="w-full mt-10 flex justify-center gap-x-10">
-        <div className="relative h-28 w-28">
+      <div className="w-full mt-10 flex justify-center gap-x-5 sm:gap-x-10">
+        <div className="relative h-20 w-20 md:h-28 md:w-28">
           <Image layout="fill" objectFit="contain" alt="Logo KKN UGM" src="https://res.cloudinary.com/gondokusuman-21/image/upload/v1627969743/logo-unit-footer_czfftq.png"></Image>
         </div>
-        <div className="relative h-28 w-28">
+        <div className="relative h-20 w-20 md:h-28 md:w-28">
           <Image layout="fill" objectFit="contain" alt="Logo KKN UGM" src="https://res.cloudinary.com/gondokusuman-21/image/upload/v1627969720/logo-ugm-footer_afx9uv.png"></Image>
         </div>
-        <div className="relative h-28 w-28">
+        <div className="relative h-20 w-20 md:h-28 md:w-28">
           <Image layout="fill" objectFit="contain" alt="Logo KKN UGM" src="https://res.cloudinary.com/gondokusuman-21/image/upload/v1627969645/logo-kkn-footer_fjasjy.png"></Image>
         </div>
       </div>

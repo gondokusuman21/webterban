@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Footer from '../../components/Footer';
 import NavbarFixed from '../../components/NavbarFixed';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const STRAPI_URL = "https://strapi-gk.herokuapp.com";
 
@@ -24,6 +26,9 @@ export const getStaticProps = async () => {
 }
 
 const Article = ({ postsData, singlePostData, categoryData }) => {
+
+  const router = useRouter();
+  const [searchArticleInput, setSearchArticleInput] = useState("");
 
   const getImage = (object) => {
     let width = object.picture.formats?.large?.width || object.picture.formats?.medium?.width || object.picture.formats?.small?.width;
@@ -48,6 +53,16 @@ const Article = ({ postsData, singlePostData, categoryData }) => {
     return `${day} ${month}`;
   }
 
+
+  const handleSearchArticleInput = (e) => {
+    setSearchArticleInput(e.target.value);
+  }
+
+  const handleSearchButtonClick = (e) => {
+    e.preventDefault();
+    router.push(`/posts/search?keyword=${searchArticleInput}`);
+  }
+
   let mainImage = getImage(singlePostData);
 
   return (
@@ -63,24 +78,24 @@ const Article = ({ postsData, singlePostData, categoryData }) => {
       <main className="w-11/12 mx-auto mt-5 lg:flex lg:flex-row-reverse lg:w-11/12 lg:justify-between xl:w-3/4">
         <aside className="my-5 lg:mb-0 lg:mt-5 lg:w-1/4">
           <div className="pt-2 relative w-56 text-gray-600">
-            <input className="border-2 border-gray-300 bg-white h-10 pl-2 pr-9 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent" type="search" name="search" placeholder="Search"></input>
-            <button type="submit" className="absolute top-18px right-1">
+            <input onChange={handleSearchArticleInput} className="border-2 border-gray-300 bg-white h-10 pl-2 pr-9 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent" type="search" name="search" placeholder="Cari artikel"></input>
+            <button onClick={handleSearchButtonClick} type="submit" className="absolute top-18px right-1">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
               </svg>
             </button>
           </div>
-          <h4 className="text-sm font-bold mb-2">TOPIK LAINNYA</h4>
+          <h4 className="text-sm font-bold mt-5 mb-3">TOPIK LAINNYA</h4>
           {categoryData.map((category, index) => {
             return (
-              <Link passHref href={`/category/${category.name}`} key={index}>
+              <Link passHref href={`/posts/category/${category.name}`} key={index}>
                 <span className="mr-3 z-20 text-sm lg:text-base text-gray-700 hover:text-blue-500 cursor-pointer">#{category.name}</span>
               </Link>
             )
           })}
         </aside>
         <hr className="my-5 lg:hidden"></hr>
-        <section className="lg:w-8/12 mt-5">
+        <section className="lg:w-8/12 mt-5 mb-10">
           <Link passHref href={`/posts/${singlePostData.slug}`}>
             <div className="cursor-pointer hover:scale-150">
               <div>
@@ -124,22 +139,26 @@ const Article = ({ postsData, singlePostData, categoryData }) => {
                   <Link key={index} passHref href={`/posts/${post.slug}`}>
                     <div className="flex w-full gap-4 lg:gap-0 lg:w-full xl:w-5/6 justify-between h-36 mt-10 cursor-pointer">
                       <div className="w-8/12 lg:w-7/12 xl:w-8/12 flex flex-col justify-center gap-y-2 lg:gap-y-1">
-                        <h5 className="text-xs lg:text-sm text-gray-500">Artikel oleh <span className="text-black font-bold">{post.author.username}</span></h5>
                         <div>
-                          <h2 className="font-black text-base lg:text-xl">{post.title}</h2>
-                          <h2 className="text-gray-600 text-xs lg:text-base">{post.description}</h2>
+                          {
+                            post.categories.map((category, index) => {
+                              return (
+                                <Link key={index} href={`/category/${category.name}`} passHref>
+                                  <span className=" z-20 text-xs inline lg:text-sm mr-2 font-bold">#{category.name}</span>
+                                </Link>
+                              )
+                            })
+                          }
                         </div>
                         <div>
-                          <h5 className="text-xxs sm:text-xs text-gray-500">
+                          <h2 className="font-bold text-base lg:text-xl">{post.title}</h2>
+                          <h2 className="hidden text-xs md:block md:text-sm lg:text-base">{post.description}</h2>
+                        </div>
+                        <div>
+                          <h5 className="text-xxs sm:text-xs">
                             <span>{convertDate(post.date)}</span>
                             <span> · </span>
                             <span>{getReadingTime(post.content)} menit membaca</span>
-                            <span> · </span>
-                            {
-                              post.categories.map((category, index) => {
-                                return <span className="ml-1 border rounded-full px-1 bg-gray-200" key={index}>{category.name}</span>
-                              })
-                            }
                           </h5>
                         </div>
                       </div>

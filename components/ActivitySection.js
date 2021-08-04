@@ -2,7 +2,7 @@ import ActivityCardItem from "./ActivityCardItem";
 
 const ActivitySection = ({ activitiesData }) => {
   return (
-    <section className="pt-5 pb-1 lg:py-10 bg-light-gray">
+    <section id="activity-section" className="pt-5 pb-1 lg:py-10 bg-light-gray">
       <div className="mb-5 font-serif flex justify-center w-11/12 mx-auto items-center text-xl lg:text-3xl font-bold tracking-tight">
         <h5 className="text-black">Keberagaman Budaya</h5>
       </div>

@@ -58,8 +58,8 @@ export default function Home({ activitiesData, eventsData, postsData }) {
                   <Image alt="Test" src={HERO_IMAGE_URL} layout="fill" objectFit="cover" />
                </div>
                <div className="absolute flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-14 xl:gap-20 top-0 left-0 w-full h-full items-center justify-center">
-                  <h1 className="text-noto font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h1>
-                  <Typist loop={false} cursorSmooth={true} typingSpeed={100} showCursor={false} className="text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white" sentences={['Selamat Datang di Kampung Jawa']}></Typist>
+                  <h1 className="text-noto font-bold text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">ꦱꦸꦒꦼꦁꦫꦮꦸꦃꦲꦶꦁꦏꦩ꧀ꦥꦸꦁꦗꦮ</h1>
+                  <Typist loop={false} cursorSmooth={true} typingSpeed={100} showCursor={false} className="text-center font-bold text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white" sentences={['Selamat Datang di Kampung Jawa']}></Typist>
                   {/* <h1 className="text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">Selamat Datang<br></br>di Kampung Jawa</h1> */}
                </div>
             </section>
