@@ -79,8 +79,8 @@ const PostsCard = ({ data, showButton }) => {
         }
         {
           showButton &&
-          <Link passHref href={`/article`}>
-            <button className="mt-5 lg:mt-10 xl:w-5/6 p-1 text-xs lg:text-base border border-gray-400 w-full z-20 hover:font-bold">Lihat Lebih Banyak</button>
+          <Link passHref href={`/posts`}>
+            <button className="mt-5 lg:mt-10 xl:w-5/6 p-1 text-xs lg:text-base border border-black w-full z-20 hover:font-bold">Lihat Lebih Banyak</button>
           </Link>
         }
       </>
