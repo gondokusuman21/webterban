@@ -72,17 +72,13 @@ const BlogPage = ({ post }) => {
         <NavbarFixed />
       </nav>
 
-      <main>
-        <section className="mx-auto text-sm px-2 lg:px-10 mt-5 lg:mt-10 flex justify-start items-center">
-          <Link passHref href={`/`}>
-            <div>Beranda‏‏‎ ‎‏‏‎ ‎{'>'}</div>
-          </Link>
-          <Link passHref href={`/`}>
-            <div>‏‏‎ ‎‏‏‎ ‎Artikel‏‏‎ ‎‏‏‎ ‎{'>'}</div>
-          </Link>
-          <Link passHref href={`/`}>
-            <div className="text-blue-500 font-semibold">‏‏‎ ‎‏‏‎ ‎{post.title}</div>
-          </Link>
+      <main className="py-10">
+        <section className="mx-auto text-sm flex justify-start items-center">
+          <div className="mx-auto lg:w-7/12 md:w-10/12 w-11/12">
+            <a>Beranda {'>'}</a>
+            <a>  Artikel {'>'}</a>
+            <a className="text-blue-500 font-bold">  {post.title}</a>
+          </div>
         </section>
 
         <div className="mt-5 mx-auto lg:w-7/12 md:w-10/12 w-11/12">
